@@ -18,13 +18,13 @@ var obj2 = {}
 const fs = require("fs")
 
 //读取每个目录下的文章
-fs.readdir('../vue-cli-version/src/article/categories',(err,files)=>{
+fs.readdir('../src/article/categories',(err,files)=>{
     if(err){
         throw err
     }else{
         files.forEach((v,i,arr)=>{
             // console.log(v)
-            let cat = '../vue-cli-version/src/article/categories/'+ v
+            let cat = '../src/article/categories/'+ v
             // console.log(cat)
             fs.readdir(cat,(err,files)=>{
                 files.forEach((v,i,arr)=>{
@@ -63,13 +63,13 @@ fs.readdir('../vue-cli-version/src/article/categories',(err,files)=>{
     }
 })
 //统计目录文件数目
-fs.readdir('../vue-cli-version/src/article/categories',(err,files)=>{
+fs.readdir('../src/article/categories',(err,files)=>{
     if(err){
         throw err
     }else{
         console.log(files)
         files.forEach((v,i,arr)=>{
-            fs.readdir('../vue-cli-version/src/article/categories/'+v,(err,files)=>{
+            fs.readdir('../src/article/categories/'+v,(err,files)=>{
                 console.log(files)
                 categories.name = v
                 categories.num = files.length
@@ -90,6 +90,7 @@ app.listen(3001);
 // console.log("markdown文件解析服务成功开启！")
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mdDB');
+mongoose.connect('mongodb://localhost:27017/mdDB',{useMongoClient: true,
+});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

@@ -1,8 +1,8 @@
-# vue-cli-version
+# sfs-blog
 
-> A Vue.js project
+> A simple fullstack blog
 
-## Build Setup
+## FrontEnd Build Setup
 
 ``` bash
 # install dependencies
@@ -11,20 +11,45 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+## BackEnd Build Setup
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+``` bash
+# open mongodb port 27017
+mongod
+
+# build data model in mongodb
+node ./server/db-data.js
+
+# get and splice complete data to frontend
+node ./server/koa-midware.js
+
+```
+## 博客技术栈
+* 前端
+  * element-ui
+  * vuex
+  * vue-router
+  * axios
+* 中间件
+  * koa
+* 后端
+  * mongodb
+
+## 已完成列表
+* 粒子动画
+* 目录下钻
+* 文章归档
+* 标签统计
+* markdown解析
+
+## 未完成列表
+* UI界面优化
+* 路由过渡功能
+* vuex管理优化
+* md信息动态存储
+* 文章详情支持图片
+* 评论功能
+* 评论管理
+* 分享功能
+* 浏览统计
