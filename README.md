@@ -1,3 +1,4 @@
+![博客预览图](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/newcover.png)
 # sfs-blog
 
 > A simple fullstack blog
