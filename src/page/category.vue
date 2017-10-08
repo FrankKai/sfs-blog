@@ -58,6 +58,29 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+.category{
+  width: 80%;
+  ul{
+    padding: 0;
+    margin: 0;
+    li{
+      list-style: none;
+      a{
+        display: inline-block;
+        margin-top: 5px;
+        text-decoration: none;
+        color: #000;
+        padding: 5px;
+        background: #e4e8f1;
+        border-radius: 5px;
+        &:hover{
+          background: #8391a5;
+          color: #fff;
+        }
+      }
+    }
+  };
 
+}
 </style>

@@ -7,19 +7,10 @@
       v-bind:index="index"
       v-bind:key="item.id"
       :title="item.title"
-      :birthtime="item.birthtime"
+      :birthtime="item.birthTime"
     ></briefarticle>
-    <!-- <briefarticle></briefarticle> -->
     <blogger></blogger>
     <timestamp></timestamp>
-    <!-- <article></article> -->
-    <!-- <div>{{articles}}</div> -->
-    <!-- <vue-markdown class="vue-markdown" v-for="item in articles" :key="item.id">
-      {{item.title}}
-      {{item.content}}
-    </vue-markdown> -->
-    <!-- <vue-markdown># 123</vue-markdown> -->
-    <!-- <category></category> -->
   </div>
 </template>
 

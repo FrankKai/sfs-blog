@@ -5,22 +5,22 @@
     <p>20170708</p>
     <p>20170709</p> -->
     <div class="tech">
-      <h4>博客技术栈</h4>
-      <p>前端</p>
-      <ul>
-        <li>element-ui</li>
-        <li>vuex</li>
-        <li>vue-router</li>
-        <li>axios</li>
-      </ul>
-      <p>中间件</p>
-      <ul>
-        <li>koa</li>
-      </ul>
-      <p>后端</p>
-      <ul>
-        <li>mongodb</li>
-      </ul>
+        <h4>博客技术栈</h4>
+        <p>前端</p>
+        <ul>
+          <li>element-ui</li>
+          <li>vuex</li>
+          <li>vue-router</li>
+          <li>axios</li>
+        </ul>
+        <p>中间件</p>
+        <ul>
+          <li>koa</li>
+        </ul>
+        <p>后端</p>
+        <ul>
+          <li>mongodb</li>
+        </ul>
     </div>
   </div>
 </template>
@@ -38,15 +38,27 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 .timestamp{
   position: absolute;
-  right:5%;
-  top:50%;
+  right:4%;
+  top:30%;
   width: 20%;
   text-align: center;
+  // border: 1px solid;
 }
 .tech{
   text-align: left;
+    ul{
+      padding:0;
+      margin:0;
+      li{
+        list-style: none;
+        display: inline;
+        background: #FFFA9D;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    };
 }
 </style>

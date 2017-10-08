@@ -9,11 +9,11 @@
                 <!-- <span>{{arcindex}}</span> -->
                 <p>{{title}}</p>
                 <div>
-                  <el-tag v-for="item in tags" :key="item">{{item}}</el-tag>
+                  <el-tag v-for="item in tags" :key="item" type="primary">{{item}}</el-tag>
                 </div>
                 <div class="bottom clearfix">
-                <time class="time">{{ birthtime }}</time>
-                <el-button type="text" class="button" @click="filteArticle()">阅读全文</el-button>
+                <time class="time">{{ birthtime.slice(0,-5) }}</time>
+                <el-button type="info" class="button" @click="filteArticle()">阅读全文</el-button>
                 </div>
             </div>
           </el-card>
@@ -58,6 +58,7 @@ export default {
 .birefarticle{
   width: 70%;
   /* text-align: center; */
+  margin:10px 0;
 }
 .time {
 font-size: 13px;
@@ -75,12 +76,8 @@ float: right;
 }
 
 .image {
-/* width: 80%;
-height: 80%; */
 margin:auto;
 display: block;
-/* height: 100px; */
-/* transform: translate(50%); */
 }
 
 .clearfix:before,
@@ -93,6 +90,6 @@ display: block;
     clear: both
 }
 .el-tag{
-  margin-left: 5px;
+  margin-right: 5px;
 }
 </style>
