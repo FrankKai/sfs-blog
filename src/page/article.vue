@@ -1,6 +1,7 @@
 <template>
     <div class="article">
         <!-- <vue-markdown>**test**</vue-markdown> -->
+        <img :src=imgsrc class="image"></img>
         <vue-markdown class="article-content">{{article.content}}</vue-markdown>
         <!-- <p>{{mddata}}</p> -->
     </div>
@@ -29,6 +30,9 @@ export default {
     computed:{
       article(){
         return this.$store.state.currentArticle
+      },
+      imgsrc(){
+        return this.$store.state.currentArticle.imgSrc
       }
   }
 }
@@ -36,8 +40,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.article{
+    width:100%;
+    text-align: center;
+}
 .article-content{
     width: 80%;
     margin: auto;
+}
+.image{
+    width:50%;
+    height: 80%;
 }
 </style>

@@ -4,7 +4,7 @@
     <el-row>
       <el-col :span="30" v-for="(o, index) in 1" :key="o">
           <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/logo.png" class="image">
+            <img :src=imgSrc class="image">
             <div style="padding: 14px;">
                 <!-- <span>{{arcindex}}</span> -->
                 <p>{{title}}</p>
@@ -28,7 +28,7 @@ import { FILTE_ARTICLE } from '../../store/mutation-types'
 export default {
   name: 'birefarticle',
   template: '<birefarticle/>',
-  props:['index','title','item','birthtime'],
+  props:['index','title','item','birthtime','imgsrc'],
   // arcindex:0,
   data () {
     return {
@@ -42,6 +42,9 @@ export default {
     },
     tags(){
       return this.$store.state.data[0][this.index].tags
+    },
+    imgSrc(){
+      return this.imgsrc
     }
   },
   methods:{
@@ -76,8 +79,9 @@ float: right;
 }
 
 .image {
-margin:auto;
+margin: 10px auto 0 auto;
 display: block;
+width: 40%;
 }
 
 .clearfix:before,

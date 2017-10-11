@@ -8,6 +8,7 @@
       v-bind:key="item.id"
       :title="item.title"
       :birthtime="item.birthTime"
+      :imgsrc="item.imgSrc"
     ></briefarticle>
     <blogger></blogger>
     <timestamp></timestamp>

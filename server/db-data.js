@@ -10,7 +10,8 @@ db.once('open',function(){
         subtitle:String,
         category:String,
         tags:Array,
-        content:String
+        content:String,
+        imgSrc:String
     })
     var Fmd = mongoose.model('frontendmd',mdSchema)
     var Foo = new Fmd({
@@ -20,7 +21,8 @@ db.once('open',function(){
         subtitle:'subfoo',
         category:'frontend',
         tags:['elementUI','vuex','vueRouter','axios'],
-        content:'1234'
+        content:'1234',
+        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/AAEAAQAAAAAAAAghAAAAJGE4ZTM1NjJkLThjNWMtNDE1OC1iMGZjLTJjMTJjMjliNjBhYw.jpg"
     })
     Foo.save(function (err) {
         console.log('Foo保存成功');
@@ -32,7 +34,8 @@ db.once('open',function(){
         subtitle:'subbar',
         category:'frontend',
         tags:['elementUI','vuex','vueRouter','axios'],
-        content:'5678'
+        content:'5678',
+        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg"
     })
     Bar.save(function (err) {
         console.log('Bar保存成功');
@@ -45,7 +48,8 @@ db.once('open',function(){
         subtitle:'subbaz',
         category:'backend',
         tags:['koa','mongodb'],
-        content:'001111001010101011'
+        content:'001111001010101011',
+        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/%E5%A4%A7%E7%A5%9E.jpg"
     })
     Baz.save(function (err) {
         console.log('Baz保存成功');
