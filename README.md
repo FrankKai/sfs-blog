@@ -26,6 +26,14 @@ node ./server/db-data.js
 node ./server/koa-midware.js
 
 ```
+## Other Build Setup
+
+``` bash
+# autogenerate markdown file
+npm run mkmd || node ./server/md-auto.js
+
+```
+
 ## 博客技术栈
 * 前端
   * element-ui
@@ -44,12 +52,16 @@ node ./server/koa-midware.js
 * 标签统计
 * markdown解析
 * UI界面优化
+* 简陋图片功能
+* 自动化生成md
 
 ## 未完成列表
-* 缩略图支持图片
-* 文章详情支持图片
 * 评论功能
 * 评论管理
 * 分享功能
 * 浏览统计
 * 导出文章
+* 浏览器兼容性
+
+## 开发日志
+* 命令行式添加文档信息

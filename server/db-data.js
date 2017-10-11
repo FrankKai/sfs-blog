@@ -14,45 +14,61 @@ db.once('open',function(){
         imgSrc:String
     })
     var Fmd = mongoose.model('frontendmd',mdSchema)
-    var Foo = new Fmd({
-        name:'foo',
-        birthTime:new Date(),
-        title:'foo',
-        subtitle:'subfoo',
-        category:'frontend',
-        tags:['elementUI','vuex','vueRouter','axios'],
-        content:'1234',
-        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/AAEAAQAAAAAAAAghAAAAJGE4ZTM1NjJkLThjNWMtNDE1OC1iMGZjLTJjMTJjMjliNjBhYw.jpg"
-    })
-    Foo.save(function (err) {
-        console.log('Foo保存成功');
-    });
-    var Bar = new Fmd({
-        name:'bar',
-        birthTime:new Date(),
-        title:'bar',
-        subtitle:'subbar',
-        category:'frontend',
-        tags:['elementUI','vuex','vueRouter','axios'],
-        content:'5678',
-        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg"
-    })
-    Bar.save(function (err) {
-        console.log('Bar保存成功');
-    });
     var Bmd = mongoose.model('backendmd',mdSchema)
-    var Baz = new Bmd({
-        name:'baz',
-        birthTime:new Date(),
-        title:'baz',
-        subtitle:'subbaz',
-        category:'backend',
-        tags:['koa','mongodb'],
-        content:'001111001010101011',
-        imgSrc:"http://ov6jc8fwp.bkt.clouddn.com/%E5%A4%A7%E7%A5%9E.jpg"
-    })
-    Baz.save(function (err) {
-        console.log('Baz保存成功');
-    });
-})
+    createMd(
+        'foo',
+        new Date(),
+        'foo',
+        'subfoo',
+        'frontend',
+        ['elementUI','vuex','vueRouter','axios'],
+        '1234',
+        "http://ov6jc8fwp.bkt.clouddn.com/AAEAAQAAAAAAAAghAAAAJGE4ZTM1NjJkLThjNWMtNDE1OC1iMGZjLTJjMTJjMjliNjBhYw.jpg",
+        "Fmd"
+    )
+    createMd(
+        'bar',
+        new Date(),
+        'bar',
+        'subbar',
+        'frontend',
+        ['elementUI','vuex','vueRouter','axios'],
+        '5678',
+        "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
+        "Fmd"
+    )
+    createMd(
+        'baz',
+        new Date(),
+        'baz',
+        'subbaz',
+        'backend',
+        ['koa','mongodb'],
+        '001111001010101011',
+        "http://ov6jc8fwp.bkt.clouddn.com/%E5%A4%A7%E7%A5%9E.jpg",
+        "Bmd"
+    )
 
+    function createMd(name,birthTime,title,subtitle,category,tags,content,imgSrc,type){
+        let obj = null
+        let newMD = null
+        obj = {
+            name:name,
+            birthTime:birthTime,
+            title:title,
+            subtitle:subtitle,
+            category:category,
+            tags:tags,
+            content:content,
+            imgSrc:imgSrc
+        }
+        if(type === "Fmd"){
+            newMD = new Fmd(obj)
+        }else if(type === "Bmd"){
+            newMD = new Bmd(obj)
+        }else{
+            console.log("Sorry,we can not recognize your collection's type")
+        }
+        return newMD.save()
+    }
+})
