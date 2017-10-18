@@ -4,15 +4,19 @@
         <img :src=imgsrc class="image"></img>
         <vue-markdown class="article-content">{{article.content}}</vue-markdown>
         <!-- <p>{{mddata}}</p> -->
+        <submit></submit>
+        <show></show>
     </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
+import Submit from '../components/comment/submit.vue'
+import Show from '../components/comment/show.vue'
 // import Axios from 'axios'
 export default {
     name: 'article',
-    components:{VueMarkdown},
+    components:{VueMarkdown,Submit,Show},
     data () {
         return {
             msg: 'Welcome to Your Vue.js App',
