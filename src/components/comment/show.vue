@@ -21,12 +21,14 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style lang="scss" scoped>
-  .show div{
-    span{
+  .show{
+    div{
+      span{
       display: inline-block
-    }
-    p{
-      display: inline-block
+      }
+      p{
+        display: inline-block
+      }
     }
   }
   </style>

@@ -1,33 +1,70 @@
 <template>
     <div class="submit">
-      <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-        <el-form-item label="昵称">
-          <el-input v-model="formLabelAlign.name"></el-input>
+      <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="昵称" prop="name">
+          <el-input v-model="ruleForm2.name"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input v-model="formLabelAlign.region"></el-input>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="ruleForm2.email" auto-complete="off"></el-input>
         </el-form-item>
-        <el-form-item label="留言">
-          <el-input v-model="formLabelAlign.type"></el-input>
+        <el-form-item label="留言" prop="comment">
+          <el-input v-model="ruleForm2.comment" auto-complete="off"></el-input>
         </el-form-item>
-        <button>提交</button>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+          <el-button @click="resetForm('ruleForm2')">重置</el-button>
+        </el-form-item>
       </el-form>
     </div>
   </template>
   
   <script>
-  export default {
-    name: 'submit',
-    template: '<submit/>',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        labelPosition: 'right',
-        formLabelAlign: {
-          name: '',
-          region: '',
-          type: ''
+   export default {
+    data() {
+      var checkName = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('昵称不能为空'));
+        }else{
+          callback()
         }
+      };
+      var validateEmail = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入邮箱'));
+        }else{
+          callback()
+        }
+      };
+      return {
+        ruleForm2: {
+          comment: '',
+          email: '',
+          name: ''
+        },
+        rules2: {
+          email: [
+            { validator: validateEmail, trigger: 'blur' }
+          ],
+          name: [
+            { validator: checkName, trigger: 'blur' }
+          ]
+        }
+      };
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+            /*push到指定文章的评论数组中*/
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
   }
