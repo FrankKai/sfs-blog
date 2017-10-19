@@ -19,6 +19,7 @@
   </template>
   
   <script>
+   import axios from 'axios'
    export default {
     data() {
       var checkName = (rule, value, callback) => {
@@ -57,6 +58,13 @@
           if (valid) {
             alert('submit!');
             /*push到指定文章的评论数组中*/
+            axios({
+              method:'post',
+              url:'http://localhost:3001/comment',
+              data:this.ruleForm2
+            }).then((response) => {
+              console.log(response);
+            })
           } else {
             console.log('error submit!!');
             return false;

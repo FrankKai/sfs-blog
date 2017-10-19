@@ -1,6 +1,5 @@
 var koa = require('koa');
 var app = new koa();
-var cors = require('koa-cors')
 var mddata = ''
 var mddataarr = [[],[]]
 var obj={
@@ -81,12 +80,44 @@ fs.readdir('../src/article/categories',(err,files)=>{
         })
     }
 })
-app.use(cors())
-app.use(function *(){
-    this.body = mddataarr;
-});
 
-app.listen(3001);
+// app.use(function *(){
+//     this.body = mddataarr;
+// });
+
+/*跨域配置*/
+var cors = require('koa-cors')
+app.use(cors())
+
+/*
+**解析配置
+*/
+const koaBody = require('koa-body');
+app.use(koaBody());
+
+/*
+**路由配置
+*/
+const route = require('koa-route');
+
+/*
+**路由处理post/get请求
+*/
+/*post提交评论*/
+const comment = ctx => {
+    ctx.response.body = 'success';
+    insertData = ctx.request.body;
+    /*存数据到数据库*/
+    db.collection('test').insertOne(insertData);
+  };
+app.use(route.post('/comment', comment))
+/*get请求博客*/
+const main = ctx => {
+    ctx.response.body = mddataarr;
+}
+app.use(route.get('/main', main))
+
+app.listen(3001); 
 // console.log("markdown文件解析服务成功开启！")
 
 var mongoose = require('mongoose');
