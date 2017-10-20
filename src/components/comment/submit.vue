@@ -8,7 +8,8 @@
           <el-input v-model="ruleForm2.email" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="留言" prop="comment">
-          <el-input v-model="ruleForm2.comment" auto-complete="off"></el-input>
+          <el-input v-model="ruleForm2.comment" auto-complete="off" type="textarea"
+          autosize :autosize="{ minRows: 2}"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
@@ -96,6 +97,9 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-  
+  .submit{
+    width:30%;
+    margin: auto
+  }
   </style>
   

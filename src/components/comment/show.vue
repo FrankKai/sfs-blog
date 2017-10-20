@@ -1,9 +1,12 @@
 <template>
     <div class="show">
-      <div>
-        <span>frank:</span>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus ex, sunt delectus dolorum sequi ipsam sit alias autem accusantium fugiat inventore non ratione ipsum facere nulla fuga consequatur. Praesentium, tempore?</p>
-      </div>
+      <ul>
+        <li v-for="item in commentsList">
+          <h5 class="name">昵称：{{item.name}}</h5>
+          <span class="email">邮箱：{{item.email}}</span>
+          <p>评论：{{item.content}}</p>
+        </li>
+      </ul>
     </div>
   </template>
   
@@ -15,21 +18,21 @@
       return {
         msg: 'Welcome to Your Vue.js App'
       }
+    },
+    computed:{
+      commentsList(){
+        return this.$store.state.currentArticle.comments
+      }
     }
   }
   </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style lang="scss" scoped>
-  .show{
-    div{
-      span{
-      display: inline-block
-      }
-      p{
-        display: inline-block
-      }
-    }
-  }
+.show{
+  text-align: left;
+  margin:auto;
+  width:80%
+}
   </style>
   
