@@ -106,9 +106,11 @@ const route = require('koa-route');
 /*post提交评论*/
 const comment = ctx => {
     ctx.response.body = 'success';
-    insertData = ctx.request.body;
+    data = ctx.request.body;
     /*存数据到数据库*/
-    db.collection('test').insertOne(insertData);
+    // db.collection('test').insertOne(data);
+    // db.collection('backendmds').findOne({name:obj.title})
+    db.collection(data.category+"mds").update({name:data.mdname},{$push:{comments:data.content}})
   };
 app.use(route.post('/comment', comment))
 /*get请求博客*/

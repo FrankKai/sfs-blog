@@ -15,6 +15,7 @@
           <el-button @click="resetForm('ruleForm2')">重置</el-button>
         </el-form-item>
       </el-form>
+      <!-- {{mdname}} -->
     </div>
   </template>
   
@@ -49,8 +50,22 @@
           name: [
             { validator: checkName, trigger: 'blur' }
           ]
+        },
+        commentObj:{
+          category:'',
+          mdname:'',
+          content:{}
         }
       };
+    },
+    // computed:{
+    //   mdname(){
+    //     return this.$store.state.currentArticle.name
+    //   }
+    // },
+    created(){
+      this.commentObj.category = this.$store.state.currentArticle.category
+      this.commentObj.mdname = this.$store.state.currentArticle.name
     },
     methods: {
       submitForm(formName) {
@@ -58,10 +73,11 @@
           if (valid) {
             alert('submit!');
             /*push到指定文章的评论数组中*/
+            this.commentObj.content = this.ruleForm2
             axios({
               method:'post',
               url:'http://localhost:3001/comment',
-              data:this.ruleForm2
+              data:this.commentObj
             }).then((response) => {
               console.log(response);
             })

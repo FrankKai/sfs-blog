@@ -11,7 +11,8 @@ db.once('open',function(){
         category:String,
         tags:Array,
         content:String,
-        imgSrc:String
+        imgSrc:String,
+        comments:Array
     })
     var Fmd = mongoose.model('frontendmd',mdSchema)
     var Bmd = mongoose.model('backendmd',mdSchema)
@@ -24,7 +25,8 @@ db.once('open',function(){
         ['elementUI','vuex','vueRouter','axios'],
         '1234',
         "http://ov6jc8fwp.bkt.clouddn.com/AAEAAQAAAAAAAAghAAAAJGE4ZTM1NjJkLThjNWMtNDE1OC1iMGZjLTJjMTJjMjliNjBhYw.jpg",
-        "Fmd"
+        "Fmd",
+        [{name:"jack",email:"jack@gmail.com",content:"hello front foo jack"},{name:"rose",email:"rose@gmail.com",content:"hello front foo rose"}]
     )
     createMd(
         'bar',
@@ -35,7 +37,8 @@ db.once('open',function(){
         ['elementUI','vuex','vueRouter','axios'],
         '5678',
         "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
-        "Fmd"
+        "Fmd",
+        [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
     )
     createMd(
         'baz',
@@ -46,10 +49,11 @@ db.once('open',function(){
         ['koa','mongodb'],
         '001111001010101011',
         "http://ov6jc8fwp.bkt.clouddn.com/%E5%A4%A7%E7%A5%9E.jpg",
-        "Bmd"
+        "Bmd",
+        [{name:"jack",email:"jack@gmail.com",content:"hello back baz jack"},{name:"rose",email:"rose@gmail.com",content:"hello back baz rose"}]
     )
 
-    function createMd(name,birthTime,title,subtitle,category,tags,content,imgSrc,type){
+    function createMd(name,birthTime,title,subtitle,category,tags,content,imgSrc,type,comments){
         let obj = null
         let newMD = null
         obj = {
@@ -60,7 +64,8 @@ db.once('open',function(){
             category:category,
             tags:tags,
             content:content,
-            imgSrc:imgSrc
+            imgSrc:imgSrc,
+            comments:comments
         }
         if(type === "Fmd"){
             newMD = new Fmd(obj)
