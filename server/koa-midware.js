@@ -15,7 +15,7 @@ var categories = {
 var obj2 = {}
 
 const fs = require("fs")
-
+function a(){
 //读取每个目录下的文章
     fs.readdir('../src/article/categories',(err,files)=>{
         if(err){
@@ -61,7 +61,9 @@ const fs = require("fs")
             })
         }
     })
+}
 //统计目录文件数目
+function b(){
     fs.readdir('../src/article/categories',(err,files)=>{
         if(err){
             throw err
@@ -83,7 +85,9 @@ const fs = require("fs")
 // app.use(function *(){
 //     this.body = mddataarr;
 // });
-
+}
+a()
+b()
 /*跨域配置*/
 var cors = require('koa-cors')
 app.use(cors())
@@ -103,19 +107,27 @@ const route = require('koa-route');
 **路由处理post/get请求
 */
 /*post提交评论*/
+// let result=null;
 const comment = ctx => {
-    var result;
+    // var result;
     data = ctx.request.body;
     /*存数据到数据库*/
     // db.collection('test').insertOne(data);
     // db.collection('backendmds').findOne({name:obj.title})
     db.collection(data.category+"mds").update({name:data.mdname},{$push:{comments:data.content}})
-    db.collection(data.category+"mds").findOne({name:data.mdname},(err,doc)=>{
-         console.log(doc['comments'])
-    })
+    // db.collection(data.category+"mds").find({name:data.mdname}).toArray(function(err, docs) {
+    //     console.dir(docs)
+    //     obj2 = docs[0]
+    //     mddataarr[0].push(obj2)
+    //     // return result = docs
+    // })
     // console.log(result)
     // ctx.response.body = result
+    mddataarr[0] = []
+    a()
+    b()
     ctx.response.body = "评论添加成功"
+    // ctx.response.body = result
     // console.log(db.collection(data.category+"mds").findOne({name:data.mdname}))
   };
 app.use(route.post('/comment', comment))

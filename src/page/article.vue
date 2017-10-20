@@ -5,7 +5,6 @@
         <img :src=imgsrc class="image"></img>
         <h3 class="mdtitle">{{mdtitle}}</h3>
         <vue-markdown class="article-content">{{article.content}}</vue-markdown>
-        <!-- <p>{{mddata}}</p> -->
         <submit></submit>
         <show></show>
     </div>
@@ -44,7 +43,7 @@ export default {
       mdtitle(){
         return this.$store.state.currentArticle.title
       }
-  }
+    }
 }
 </script>
 
