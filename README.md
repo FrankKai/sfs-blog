@@ -1,8 +1,14 @@
+###首页
 ![博客预览图](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/newcover.png)
+###博客
 ![博客](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/博客.png)
+###目录
 ![目录](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/目录.png)
+###归档
 ![归档](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/归档.png)
+###标签
 ![标签](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/标签.png)
+###文章详情
 ![文章详情](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/文章详情.png)
 # sfs-blog
 
