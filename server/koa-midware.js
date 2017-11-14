@@ -107,28 +107,15 @@ const route = require('koa-route');
 **路由处理post/get请求
 */
 /*post提交评论*/
-// let result=null;
 const comment = ctx => {
     // var result;
     data = ctx.request.body;
     /*存数据到数据库*/
-    // db.collection('test').insertOne(data);
-    // db.collection('backendmds').findOne({name:obj.title})
     db.collection(data.category+"mds").update({name:data.mdname},{$push:{comments:data.content}})
-    // db.collection(data.category+"mds").find({name:data.mdname}).toArray(function(err, docs) {
-    //     console.dir(docs)
-    //     obj2 = docs[0]
-    //     mddataarr[0].push(obj2)
-    //     // return result = docs
-    // })
-    // console.log(result)
-    // ctx.response.body = result
     mddataarr[0] = []
     a()
     b()
     ctx.response.body = "评论添加成功"
-    // ctx.response.body = result
-    // console.log(db.collection(data.category+"mds").findOne({name:data.mdname}))
   };
 app.use(route.post('/comment', comment))
 /*get请求博客*/

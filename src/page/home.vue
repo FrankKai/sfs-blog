@@ -10,7 +10,7 @@
             <a href="http://www.jianshu.com/u/ff2903c0af37">简书</a>
         </div>
         <div class= 'blog-router'>
-            <a href="http://localhost:8081/#/blog">>>进入博客</a>
+            <a href="/blog">>>进入博客</a>
         </div>
         <div class = 'footer'>
             <p>©2017 ❤趁你还年轻</p>
@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import particle from "../components/particle.vue"
+import particle from "../components/common/particle.vue"
 export default {
   name: 'home',
   components:{particle}

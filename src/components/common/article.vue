@@ -12,9 +12,9 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import Submit from '../components/comment/submit.vue'
-import Show from '../components/comment/show.vue'
-import Navigation from '../components/common/navigation.vue'
+import Submit from '../comment/submit.vue'
+import Show from '../comment/show.vue'
+import Navigation from '../common/navigation.vue'
 // import Axios from 'axios'
 export default {
     name: 'article',

@@ -5,16 +5,22 @@ Vue.use(Router)
 
 import home from '../page/home.vue'
 import User from '../components/hdu.vue'
-import Article from '../page/article.vue'
+import Article from '../components/common/article.vue'
 import Blog from '../page/blog.vue'
 import Category from '../page/category.vue'
 import Record from '../page/record.vue'
 import Tag from '../page/tag.vue'
 import articleLists from '../components/category/articlelists.vue'
+import NotFoundComponent from '../components/common/404.vue'
 
 
 export default new Router({
+    mode:'history',
     routes:[
+        {
+            path:'*',
+            component: NotFoundComponent
+        },
         {
             path: '/',
             name: 'index',

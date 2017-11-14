@@ -1,15 +1,15 @@
 <template>
   <div class="navigation">
     <div class="logo">
-      <p><a href="http://localhost:8080/#/home">趁你还年轻的博客</a></p>
+      <p><a href="/">趁你还年轻的博客</a></p>
       <!-- <p>趁你还年轻的博客</p> -->
     </div>
     <div class="navs">
-      <a href="http://localhost:8080/#/blog">博客</a>
-      <a href="http://localhost:8080/#/category">目录</a>
-      <a href="http://localhost:8080/#/record">归档</a>
-      <a href="http://localhost:8080/#/tag">标签</a>
-      <a href="http://localhost:8080/#/home">返回封面</a>
+      <a href="/blog">博客</a>
+      <a href="/category">目录</a>
+      <a href="/record">归档</a>
+      <a href="/tag">标签</a>
+      <a href="/home">返回封面</a>
     </div>
   </div>
 </template>
