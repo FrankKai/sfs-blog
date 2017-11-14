@@ -5,11 +5,11 @@
       <!-- <p>趁你还年轻的博客</p> -->
     </div>
     <div class="navs">
-      <a href="http://localhost:8081/#/blog">博客</a>
-      <a href="http://localhost:8081/#/category">目录</a>
-      <a href="http://localhost:8081/#/record">归档</a>
-      <a href="http://localhost:8081/#/tag">标签</a>
-      <a href="http://localhost:8081/#/home">返回封面</a>
+      <router-link to='/blog'>博客</router-link>
+      <router-link to='/category'>目录</router-link>
+      <router-link to='/record'>归档</router-link>
+      <router-link to='/tag'>标签</router-link>
+      <router-link to='/home'>返回封面</router-link>
     </div>
   </div>
 </template>

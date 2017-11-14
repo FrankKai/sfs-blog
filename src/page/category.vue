@@ -4,10 +4,10 @@
     <navigation></navigation>
     <ul id="cat">
       <li v-for="(category,index) in categories" :key="category.name" @click="getArticles(index)">
-        <a :href="'http://localhost:8081/#/category/'+category.name">
+        <router-link :to="'/category/'+category.name">
         {{category.name}}
         {{category.num}}
-        </a>
+        </router-link>
       </li>
     </ul>
     <!-- <p v-for="category in categories" :key="category.name">

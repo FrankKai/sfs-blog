@@ -10,7 +10,8 @@
             <a href="http://www.jianshu.com/u/ff2903c0af37">简书</a>
         </div>
         <div class= 'blog-router'>
-            <a href="http://localhost:8081/#/blog">>>进入博客</a>
+            <!-- <a href="http://localhost:8081/#/blog">>>进入博客</a> -->
+            <router-link to='/blog'>>>进入博客</router-link>
         </div>
         <div class = 'footer'>
             <p>©2017 ❤趁你还年轻</p>

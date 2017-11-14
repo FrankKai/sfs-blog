@@ -4,9 +4,9 @@
     {{msg}}
     <ul>
         <li v-for="article in articles" :key="article" @click="filteArticle(article)">
-          <a :href="locationUrl+article">
+          <router-link :to="'/category'+'/'+name+'/'+article">
             {{article.slice(0,-3)}}
-          </a>
+          </router-link>
         </li>
     </ul>
   </div>
@@ -31,6 +31,9 @@ export default {
       locationUrl(){
         return location.href  + '/'
         // console.log(this.location)
+      },
+      name(){
+        return this.$store.state.currentArticles.name        
       }
   },
   created(){
