@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
-    {{msg}}
+  {{msg}}
   </div>
 </template>
 
 <script>
+// import {mavonEditor} from 'mavon-editor'
 export default {
   name: 'hello',
   template: '<hello/>',

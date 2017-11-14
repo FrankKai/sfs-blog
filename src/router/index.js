@@ -12,7 +12,7 @@ import Record from '../page/record.vue'
 import Tag from '../page/tag.vue'
 import articleLists from '../components/category/articlelists.vue'
 import NotFoundComponent from '../components/common/404.vue'
-
+import Editor from '../components/editor.vue'
 
 export default new Router({
     mode:'history',
@@ -79,6 +79,11 @@ export default new Router({
             path: '/tag',
             name: 'tag',
             component: Tag
+        },
+        {
+            path: '/editor',
+            name: 'editor',
+            component: Editor
         }
     ]
 })

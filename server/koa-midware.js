@@ -124,6 +124,19 @@ const main = ctx => {
 }
 app.use(route.get('/main', main))
 
+//在线生成markdown文件
+const path = require('path')
+const mdDir = path.dirname(__dirname)+"\\src\\article"
+// let mdName = ""
+const markdown = ctx => {
+    let content = ctx.request.body.value
+    fs.writeFile(mdDir+'/'+"test.md",content,(err)=>{
+        if(err) throw err;
+        // console.log("自动生成markdown成功")
+    })
+    ctx.response.body = "md文档生成成功"
+}
+app.use(route.post('/markdown', markdown))
 app.listen(3001); 
 // console.log("markdown文件解析服务成功开启！")
 
