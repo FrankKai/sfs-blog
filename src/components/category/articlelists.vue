@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import { FILTE_CATEGORY_ARTICLE } from '../../store/mutation-types'
+// import dataApi from '../../api/dataapi'
+// import { FILTE_CATEGORY_ARTICLE,SET_DATA,FILTE_ARTICLES } from '../../store/mutation-types'
+import { FILTE_ARTICLES } from '../../store/mutation-types'
 export default {
   name: 'articlelists',
   template: '<articlelists/>',
@@ -34,6 +36,13 @@ export default {
   created(){
     console.log(location)
   },
+  // mounted(){
+  //   let that=this;
+  //   dataApi.getData(data => {
+  //       that.$store.commit(SET_DATA,data);
+  //     }
+  //   )
+  // },
 //   methods:{
 //       getArticles:function(){
 //           this.$store.commit(FILTE_ARTICLES)

@@ -4,7 +4,7 @@
     <navigation></navigation>
     <ul id="cat">
       <li v-for="(category,index) in categories" :key="category.name" @click="getArticles(index)">
-        <a :href="'http://localhost:8080/#/category/'+category.name">
+        <a :href="'http://localhost:8081/#/category/'+category.name">
         {{category.name}}
         {{category.num}}
         </a>

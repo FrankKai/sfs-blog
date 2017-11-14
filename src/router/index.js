@@ -15,7 +15,7 @@ import NotFoundComponent from '../components/common/404.vue'
 import Editor from '../components/editor.vue'
 
 export default new Router({
-    mode:'history',
+    // mode:'history',
     routes:[
         {
             path:'*',
@@ -57,7 +57,7 @@ export default new Router({
         },
         {
             path: '/category/:articleLists',
-            name: 'category',
+            name: 'articleLists',
             component: articleLists
         },
         {
