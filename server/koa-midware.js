@@ -126,11 +126,12 @@ app.use(route.get('/main', main))
 
 //在线生成markdown文件
 const path = require('path')
-const mdDir = path.dirname(__dirname)+"\\src\\article"
+const mdDir = path.dirname(__dirname)+"\\src\\article\\online"
 // let mdName = ""
 const markdown = ctx => {
     let content = ctx.request.body.value
-    fs.writeFile(mdDir+'/'+"test.md",content,(err)=>{
+    let header = ctx.request.body.header
+    fs.writeFile(mdDir+'/'+header+'.md',content,(err)=>{
         if(err) throw err;
         // console.log("自动生成markdown成功")
     })

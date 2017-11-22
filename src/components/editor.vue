@@ -4,6 +4,7 @@
       <h1>{{title}}<el-button type="primary" class="button" @click="createMarkdown()">生成</el-button></h1>
     </div>
     <div class="left">
+      <input type="text" placeholder="请输入文章标题" v-model="content.header"></input>
       <textarea v-model="content.value"></textarea>
     </div>
     <div class="right">
@@ -39,6 +40,7 @@ export default {
       title:'markdown文档在线生成器',
       msg: 'Welcome to Your Vue.js App',
       content: {
+        header:'',
         value:'hello world'
       }
     }

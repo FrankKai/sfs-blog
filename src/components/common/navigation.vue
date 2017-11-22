@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <div class="logo">
-      <p><a href="/">趁你还年轻的博客</a></p>
+      <p><router-link to='/'>趁你还年轻的博客</router-link></p>
       <!-- <p>趁你还年轻的博客</p> -->
     </div>
     <div class="navs">
@@ -9,6 +9,7 @@
       <router-link to='/category'>目录</router-link>
       <router-link to='/record'>归档</router-link>
       <router-link to='/tag'>标签</router-link>
+      <router-link to='/editor'>写文章</router-link>            
       <router-link to='/home'>返回封面</router-link>
     </div>
   </div>

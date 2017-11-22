@@ -4,7 +4,7 @@
     {{msg}}
     <ul>
         <li v-for="article in articles" :key="article" @click="filteArticle(article)">
-          <router-link :to="'/category'+'/'+name+'/'+article">
+          <router-link :to="'/category'+'/'+name+'/'+article.slice(0,-3)">
             {{article.slice(0,-3)}}
           </router-link>
         </li>
@@ -54,7 +54,7 @@ export default {
   methods:{
     filteArticle: function(article){
       console.log(article)
-      this.$store.commit(FILTE_CATEGORY_ARTICLE,article);
+      this.$store.commit('FILTE_CATEGORY_ARTICLE',article);
       // this.$router.push({path:'/blog/'+this.title});
     }
   }
