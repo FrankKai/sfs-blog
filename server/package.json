@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "koa-body-parser": "^1.1.2",
+    "koa-router": "^7.3.0"
+  }
+}
