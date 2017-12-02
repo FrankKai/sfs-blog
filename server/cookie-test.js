@@ -21,3 +21,5 @@ const deleteCookie = ctx =>{
 }
 app.use(route.get('/delete',deleteCookie))
 app.listen(3000);
+
+console.log(process.env)
