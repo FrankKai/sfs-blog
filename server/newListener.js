@@ -22,6 +22,7 @@ myEmitter.once('newListener',(event,listener)=>{
           console.log('C')
       })
     }
+    // console.log(listener)
   })
 myEmitter.on('event1',()=>{
     console.log('D')
