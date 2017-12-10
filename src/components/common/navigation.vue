@@ -11,20 +11,24 @@
       <router-link to='/tag'>标签</router-link>
       <router-link to='/editor'>写文章</router-link>            
       <router-link to='/home'>返回封面</router-link>
+      <el-button @click="koaProxyTest">koa2 proxy test</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import koaProxy from '../../api/koa-proxy.js'
 export default {
   name: 'navigation',
   template:'<navigation/>',
   data() {
       return {
       };
-    },
-  methods: {
-
+  },
+  methods:{
+    koaProxyTest: function(){
+      koaProxy.getData(console.log)
+    }
   }
 }
 </script>

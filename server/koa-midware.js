@@ -138,6 +138,43 @@ const markdown = ctx => {
     ctx.response.body = "md文档生成成功"
 }
 app.use(route.post('/markdown', markdown))
+
+// var proxy = require('koa-proxy');
+// app.use(route.get('index.js', proxy({
+//     url: 'http://alicdn.com/index.js'
+//   })));
+
+
+// const octocat = ctx => {
+//     ctx.response.body = "koa proxy success";
+// }
+// app.use(route.get('/octocat', octocat))
+// middleware
+// const proxy = require('koa-proxies')
+// const httpsProxyAgent = require('https-proxy-agent')
+// console.log(proxy)
+// app.use(proxy('/octocat', {
+//   target: 'https://api.github.com/users',    
+//   changeOrigin: true,
+//   agent: new httpsProxyAgent('http://1.2.3.4:88'),
+//   rewrite: path => path.replace(/^\/octocat(\/|\/\w+)?$/, '/emojis'),
+//   logs: true
+// }))
+
+const Router = require('koa-router')
+const c2k = require('koa2-connect')
+const proxy = require('http-proxy-middleware')
+var router = new Router()
+router.get('/nodejs', c2k(proxy({
+    target: 'https://api.github.com/users', 
+    changeOrigin:true,
+    // pathRewrite: path => path.replace(/^\/octocat(\/|\/\w+)?$/, '/emojis')
+    // agent: new httpsProxyAgent('http://1.2.3.4:88'),
+   pathRewrite: path => path.replace(/^\/nodejs(\/|\/\w+)?$/, '/java'),
+    // logs: true
+})))
+app.use(router.routes())
+
 app.listen(3001); 
 // console.log("markdown文件解析服务成功开启！")
 
