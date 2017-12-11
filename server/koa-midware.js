@@ -179,7 +179,6 @@ app.listen(3001);
 // console.log("markdown文件解析服务成功开启！")
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mdDB',{useMongoClient: true,
-});
+mongoose.connect('mongodb://localhost:27017/mdDB',{useMongoClient: true,});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
