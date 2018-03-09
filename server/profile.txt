@@ -1,0 +1,47 @@
+Statistical profiling result from isolate-000001FB6E1FBE40-v8.log, (13887 ticks, 44 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+      1    0.0%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+  13806   99.4%   99.4%  Handler: prototype {4}
+      9    0.1%    0.1%  Function: ~init C:\Users\frank\Desktop\sfs-blog\node_modules\_debug@3.1.0@debug\src\node.js:173:15
+      5    0.0%    0.0%  RegExp: v(\\d+)\\.(\\d+)\\.(\\d+)
+      3    0.0%    0.0%  Stub: CEntryStub
+      3    0.0%    0.0%  RegExp: ^(?:[a-zA-Z]:|[\\\\/]{2}[^\\\\/]+[\\\\/][^\\\\/]+)?[\\\\/]*
+      2    0.0%    0.0%  Stub: RecordWriteStub
+      2    0.0%    0.0%  RegExp: Error$
+      2    0.0%    0.0%  Handler: prototype {3}
+      2    0.0%    0.0%  Function: ~createHybrid C:\Users\frank\Desktop\sfs-blog\server\node_modules\_lodash@4.17.4@lodash\lodash.js:5183:26
+      1    0.0%    0.0%  Stub: RecordWriteStub {1}
+      1    0.0%    0.0%  Stub: ElementsTransitionAndStoreStub
+      1    0.0%    0.0%  Stub: CallICStubNULL_OR_UNDEFINED, DISALLOW_TAIL_CALLS
+      1    0.0%    0.0%  RegExp: [ \,]+
+      1    0.0%    0.0%  Handler: prototype {2}
+      1    0.0%    0.0%  Handler: prototype {1}
+      1    0.0%    0.0%  Handler: prototype
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+  13841   99.7%   99.7%  JavaScript
+      0    0.0%    0.0%  C++
+      1    0.0%    0.0%  GC
+      1    0.0%          Shared libraries
+     44    0.3%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+  13806   99.4%  Handler: prototype {4}
+
