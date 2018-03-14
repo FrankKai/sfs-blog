@@ -40,10 +40,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .timestamp{
-  position: absolute;
-  right:4%;
-  top:30%;
-  width: 20%;
+  // position: absolute;
+  // right:4%;
+  // top:30%;
+  // float: right;
+  // width: 20%;
+  padding: 10px;
   text-align: center;
   // border: 1px solid;
 }
@@ -53,10 +55,11 @@ export default {
       padding:0;
       margin:0;
       li{
+        display: inline-block;
         list-style: none;
-        display: inline;
         background: #FFFA9D;
         padding: 5px;
+        margin: 5px;
         border-radius: 5px;
       }
     };

@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <div class="logo">
-      <p><router-link to='/'>趁你还年轻的博客</router-link></p>
+      <router-link to='/'>趁你还年轻的博客</router-link>
       <!-- <p>趁你还年轻的博客</p> -->
     </div>
     <div class="navs">
@@ -11,8 +11,9 @@
       <router-link to='/tag'>标签</router-link>
       <router-link to='/editor'>写文章</router-link>            
       <router-link to='/home'>返回封面</router-link>
-      <el-button @click="koaProxyTest">koa2 proxy test</el-button>
+      <!-- <el-button @click="koaProxyTest">koa2 proxy test</el-button> -->
     </div>
+    <div class="clearfix"></div>
   </div>
 </template>
 
@@ -36,16 +37,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .navs {
-  position: absolute;
-  right:0;
-  top:10px;
+  // position: absolute;
+  // right:0;
+  // top:10px;
+  display: inline-block;
+  float: right;
+  // width: 70%;
   a {
     display: inline-block;
     text-decoration:none;
     text-align: center;
     // color: chocolate;
     // background: #DFFCB5;
-    padding:10px;
+    padding:3px;
     border-radius:5%;
     color: #fff;
     background: #403F48;
@@ -56,30 +60,33 @@ export default {
   }
 }
 .navigation{
-  position: relative;
   width: 70%;
-  div{
-    display: inline-block
-  }
+  margin-top: 10px;
+  clear: both;
+  display: inline-block;
   .logo{
-    // position: absolute;
-    // left:0;
-    p{
+    // box-sizing: border-box;
+    // border: 10px solid transparent;
+    width: 30%;
+    display: inline-block;
       a{
         text-decoration:none;
-        font-size: 25px;
+        font-size: 15px;
         margin:0;
         margin:6px 0;
         border-radius:5%;
-        padding:10px;
+        padding:6px;
         color: #fff;
         background: #403F48;
         &:hover{
           color: #fff;
           background: #8391a5
         }
-      }
+
     }
   }
+}
+.clearfix{
+  clear: both;
 }
 </style>

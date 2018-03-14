@@ -62,6 +62,7 @@ export default {
   width: 70%;
   /* text-align: center; */
   margin:10px 0;
+  display: inline-block;
 }
 .time {
 font-size: 13px;

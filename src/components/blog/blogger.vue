@@ -29,10 +29,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .blogger{
-  position: absolute;
-  right:8%;
-  top:8%;
+  // position: absolute;
+  // right:8%;
+  // top:8%;
   // text-align: center;
+  // float: right;
+  padding: 10px;
   .avatar{
     text-align: center;
     img{
@@ -50,12 +52,15 @@ export default {
       padding: 0;
       margin: 0;
       li{
-        display: inline-block;
         list-style: none;
+        // margin-top: 10px;
+        display: inline-block;
         a{
+          display: inline-block;
           text-decoration: none;
           color: #fff;
           padding: 5px;
+          margin: 5px;
           background: #41C5D3;
           border-radius: 5px;
           &:hover{

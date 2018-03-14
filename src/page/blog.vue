@@ -1,5 +1,9 @@
 <template>
   <div class="blog">
+    <div class="sidebar">
+      <blogger></blogger>
+      <timestamp></timestamp>
+    </div>
     <navigation></navigation>
     <briefarticle
       v-for="(item, index) in articles"
@@ -10,8 +14,7 @@
       :birthtime="item.birthTime"
       :imgsrc="item.imgSrc"
     ></briefarticle>
-    <blogger></blogger>
-    <timestamp></timestamp>
+
   </div>
 </template>
 
@@ -78,5 +81,9 @@ a {
 .vue-markdown{
   width: 80%;
   background: rgba(183,245,222,0.5);
+}
+.sidebar{
+  float: right;
+  width: 30%;
 }
 </style>
