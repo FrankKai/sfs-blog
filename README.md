@@ -113,3 +113,5 @@ npm run mkmd || node ./server/md-auto.js
 			* mutation.js------------------------------------更新数据
 		* App.vue--------------------------------------------页面路由父容器
 		* main.js--------------------------------------------创建vue实例，挂载app，传入vue-router，vuex实例。
+
+//commit test
