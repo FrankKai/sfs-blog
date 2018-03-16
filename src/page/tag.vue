@@ -1,6 +1,10 @@
 <template>
   <div class="tag">
     <!-- {{msg}} -->
+    <div class="sidebar">
+      <blogger></blogger>
+      <timestamp></timestamp>
+    </div>
     <navigation></navigation>
     <div>
       <el-tag v-for="(value,key) in tags" :key="key">
@@ -13,10 +17,12 @@
 
 <script>
 import navigation from '../components/common/navigation.vue'
+import blogger from '../components/blog/blogger.vue'
+import timestamp from '../components/blog/timestamp.vue'
 export default {
   name: 'tag',
   template: '<tag/>',
-  components:{navigation},
+  components:{navigation,blogger,timestamp},
   data () {
     return {
       msg: 'tag',
@@ -64,5 +70,9 @@ export default {
 }
 .el-tag{
   margin-left: 5px;
+}
+.sidebar{
+  float:right;
+  width: 30%;
 }
 </style>

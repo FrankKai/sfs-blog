@@ -61,7 +61,7 @@ export default {
         height: 50%;
     }
     .article-content{
-        width: 80%;
+        width: 70%;
         margin: auto;
         text-align: left
     }

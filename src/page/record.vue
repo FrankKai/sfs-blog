@@ -1,6 +1,10 @@
 <template>
   <div class="record">
     <!-- {{msg}} -->
+    <div class="sidebar">
+      <blogger></blogger>
+      <timestamp></timestamp>
+    </div>
     <navigation></navigation>
     <ul>
       <li v-for="(item,index) in articles" :key="item.name" @click="filteArticle(index,item.title)">
@@ -13,12 +17,14 @@
 
 <script>
 import navigation from '../components/common/navigation.vue'
+import blogger from '../components/blog/blogger.vue'
+import timestamp from '../components/blog/timestamp.vue'
 import { FILTE_ARTICLE } from '../store/mutation-types'
 
 export default {
   name: 'record',
   template: '<record/>',
-  components:{navigation},
+  components:{navigation,blogger,timestamp},
   data () {
     return {
       msg: 'record'
@@ -45,6 +51,7 @@ export default {
     ul{
     padding: 0;
     margin: 0;
+    width: 70%;
     li{
       list-style: none;
       display: block;
@@ -60,5 +67,9 @@ export default {
       }
     }
   };
+}
+.sidebar{
+  float:right;
+  width: 30%;
 }
 </style>

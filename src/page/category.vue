@@ -1,6 +1,10 @@
 <template>
   <div class="category">
     <!-- {{msg}} -->
+    <div class="sidebar">
+      <blogger></blogger>
+      <timestamp></timestamp>
+    </div>
     <navigation></navigation>
     <ul id="cat">
       <li v-for="(category,index) in categories" :key="category.name" @click="getArticles(index)">
@@ -17,13 +21,15 @@
 
 <script>
 import navigation from '../components/common/navigation.vue'
+import blogger from '../components/blog/blogger.vue'
+import timestamp from '../components/blog/timestamp.vue'
 // import axios from 'axios'
 import dataApi from '../api/dataapi'
 import { SET_DATA,FILTE_ARTICLES } from '../store/mutation-types'
 export default {
   name: 'category',
   template: '<category/>',
-  components:{navigation},
+  components:{navigation,blogger,timestamp},
   data () {
     return {
       msg: 'category'
@@ -82,5 +88,9 @@ export default {
     }
   };
 
+}
+.sidebar{
+  float: right;
+  width: 30%;
 }
 </style>

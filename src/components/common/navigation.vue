@@ -65,9 +65,8 @@ export default {
   clear: both;
   display: inline-block;
   .logo{
-    // box-sizing: border-box;
-    // border: 10px solid transparent;
-    width: 30%;
+    // width: 30%;
+    float: left;
     display: inline-block;
       a{
         text-decoration:none;
