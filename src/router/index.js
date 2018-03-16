@@ -10,6 +10,7 @@ import Blog from '../page/blog.vue'
 import Category from '../page/category.vue'
 import Record from '../page/record.vue'
 import Tag from '../page/tag.vue'
+import Admin from '../page/admin.vue'
 import articleLists from '../components/category/articlelists.vue'
 import NotFoundComponent from '../components/common/404.vue'
 import Editor from '../components/editor.vue'
@@ -84,6 +85,11 @@ export default new Router({
             path: '/editor',
             name: 'editor',
             component: Editor
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: Admin
         }
     ]
 })
