@@ -10,7 +10,7 @@
     template: '<turnoff/>',
     methods: {
       open2 () {
-        this.$confirm('此操作将注销该用户' + ', 是否继续?', '提示', {
+        this.$confirm('此操作将删除该评论' + ', 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -30,19 +30,19 @@
           )
           this.$message({
             type: 'success',
-            message: '注销成功!'
+            message: '删除成功!'
           })
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消注销'
+            message: '已取消删除'
           })
         })
       }
     },
     data () {
       return {
-        STATE: '注销',
+        STATE: '删除',
         pageNum:0,
         urlDef: '',
         localName: '',

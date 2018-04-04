@@ -6,7 +6,7 @@
         <div class="user-body">
             <div class="body-header">
             <el-row :gutter="20">
-                <el-col :span="16"><div class="userList">管理员用户列表</div></el-col>
+                <el-col :span="16"><div class="userList">评论列表</div></el-col>
                 <!-- <el-col :span="8"><div class="addUser"><create></create></div></el-col> -->
             </el-row>
             </div>
@@ -89,7 +89,7 @@ export default {
     mounted(){
         Axios({
             method: 'get',
-            url: "https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/query/comments"
+            url: "https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/retrive"
         }).then((response) => {
             console.log(response)
             this.users = response.data.data
@@ -116,7 +116,14 @@ export default {
         //     this.deleteIndex = index
         //     this.finalDelData = this.users[this.deleteIndex]
         // },
-
+        delete(){
+            Axios({
+                method: 'DELETE',
+                url: 'https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/delete/:id'
+            }).then((res)=>{
+                console.log(res)
+            })
+        }
     },
     data () {
         return {
