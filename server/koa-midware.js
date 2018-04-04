@@ -110,6 +110,7 @@ const route = require('koa-route');
 const comment = ctx => {
     // var result;
     data = ctx.request.body;
+    data.content["article"] = data.mdname;
     /*存数据到数据库*/
     db.collection(data.category+"mds").update({name:data.mdname},{$push:{comments:data.content}})
     mddataarr[0] = []
@@ -123,6 +124,22 @@ const main = ctx => {
     ctx.response.body = mddataarr;
 }
 app.use(route.get('/main', main))
+
+
+/**
+ * desc: 评论接口
+ */
+const comments = ctx =>{
+    let commentsArr = [];
+    mddataarr[0].forEach((e,i,arr)=>{
+        e.comments.forEach((e,i,arr)=>{
+            commentsArr.push(e)
+        })
+    });
+    ctx.response.body = commentsArr;
+}
+app.use(route.get('/comments',comments))
+
 
 //在线生成markdown文件
 const path = require('path')

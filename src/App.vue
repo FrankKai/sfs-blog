@@ -31,7 +31,7 @@ body{
   margin:0;
   display: flex;
   justify-content: center;
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   position: absolute;
   /* background-color: rgba(183,245,222,0.5); */

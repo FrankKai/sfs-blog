@@ -30,7 +30,7 @@
                 >
                 </el-table-column>
                 <el-table-column
-                prop="comment"
+                prop="content"
                 label="评论"
                 >
                 </el-table-column>
@@ -39,10 +39,10 @@
                 width="300"
                 >
                 <template scope="scope">
-                    <div @click='handleEdit(scope.$index, scope.row)' class="clearPadding"><update></update></div>
+                    <!-- <div @click='handleEdit(scope.$index, scope.row)' class="clearPadding"><update></update></div> -->
                     <!-- <div @click='handleCopy(scope.$index, scope.row)' class="clearPadding"><copy></copy></div>
                     <div @click='handleDelete(scope.$index, scope.row)' class="clearPadding"><turnon :finalDelData="finalDelData"></turnon></div>         -->
-                    <div @click='handleDelete(scope.$index, scope.row)' class="clearPadding"><turnoff :finalDelData="finalDelData"></turnoff></div>
+                    <div @click='deleteComment' class="clearPadding"><turnoff></turnoff></div>
                 </template>
                 </el-table-column>
             </el-table>
@@ -50,7 +50,7 @@
         </div>
         <div class="user-footer">
             <div class="block">
-                <pag></pag>
+                <!-- <pag></pag> -->
             </div>
         </div>
     </div>
@@ -89,10 +89,11 @@ export default {
     mounted(){
         Axios({
             method: 'get',
-            url: "https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/retrive"
+            url:'http://localhost:3001/comments',            
+            // url: "https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/retrive"
         }).then((response) => {
             console.log(response)
-            this.users = response.data.data
+            this.users = response.data
             console.log(this)
         })
     },
@@ -116,9 +117,10 @@ export default {
         //     this.deleteIndex = index
         //     this.finalDelData = this.users[this.deleteIndex]
         // },
-        delete(){
+        deleteComment(){
             Axios({
                 method: 'DELETE',
+                // url:'http://localhost:3001/comments',
                 url: 'https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/delete/:id'
             }).then((res)=>{
                 console.log(res)

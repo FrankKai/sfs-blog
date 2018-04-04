@@ -15,19 +15,6 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.userName = location.search.substring(10)
-          this.pageNum = this.$store.getters.page
-          this.localName = this.finalDelData.name
-          this.urlDef = Api.Ip.hosDev+'user/' + this.localName + '?enable=N'
-          this.$store.dispatch("postTurnOnUser",
-            {
-              url:this.urlDef,
-              name:this.localName,
-              num:this.pageNum,
-              username:this.userName,
-              searchName:this.$store.getters.search.name
-            }
-          )
           this.$message({
             type: 'success',
             message: '删除成功!'
