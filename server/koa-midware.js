@@ -1,4 +1,5 @@
 var koa = require('koa');
+var ObjectId = require('mongodb').ObjectID;
 var app = new koa();
 var mddata = ''
 var mddataarr = [[],[]]
@@ -16,7 +17,9 @@ var obj2 = {}
 
 const fs = require("fs")
 function a(){
-//读取每个目录下的文章
+/*
+** desc:读取每个目录下的文章
+*/
     fs.readdir('../src/article/categories',(err,files)=>{
         if(err){
             throw err
@@ -42,6 +45,7 @@ function a(){
                                     console.dir(docs);
                                     if(docs.length>0){
                                         obj2 = docs[0]
+                                        console.log("a",obj2)
                                         mddataarr[0].push(obj2)
                                         obj2={}
                                     }
@@ -62,7 +66,9 @@ function a(){
         }
     })
 }
-//统计目录文件数目
+/*
+** desc:统计目录文件数目
+*/
 function b(){
     fs.readdir('../src/article/categories',(err,files)=>{
         if(err){
@@ -82,69 +88,122 @@ function b(){
             })
         }
     })
-// app.use(function *(){
-//     this.body = mddataarr;
-// });
 }
 a()
 b()
-/*跨域配置*/
+/*
+** desc:跨域配置
+*/
 var cors = require('koa-cors')
 app.use(cors())
 
 /*
-**解析配置
+** desc:解析配置
 */
 const koaBody = require('koa-body');
 app.use(koaBody());
 
 /*
-**路由配置
+** desc:路由配置
 */
-const route = require('koa-route');
+// const route = require('koa-route');
+// const Router = require('koa-route');
+const Router = require('koa-router')
+const route = new Router();
+/*
+** desc:路由处理post/get请求
+*/
 
 /*
-**路由处理post/get请求
+** desc:post提交评论
 */
-/*post提交评论*/
 const comment = ctx => {
-    // var result;
     data = ctx.request.body;
     data.content["article"] = data.mdname;
-    /*存数据到数据库*/
+    console.log(ctx,ctx.request.body)
+    /*
+    ** desc:存数据到数据库
+    */
     db.collection(data.category+"mds").update({name:data.mdname},{$push:{comments:data.content}})
     mddataarr[0] = []
     a()
     b()
     ctx.response.body = "评论添加成功"
   };
-app.use(route.post('/comment', comment))
-/*get请求博客*/
+route.post('/comment', comment)
+
+/*
+** desc:get请求博客
+*/
 const main = ctx => {
     ctx.response.body = mddataarr;
 }
-app.use(route.get('/main', main))
+route.get('/main', main)
 
 
 /**
- * desc: 评论接口
+ * desc: get评论集接口
  */
 const comments = ctx =>{
     let commentsArr = [];
     mddataarr[0].forEach((e,i,arr)=>{
+        let id = e._id;
+        let category = e.category;
         e.comments.forEach((e,i,arr)=>{
+            e.id = id;
+            e.category = category;
+            e.index = i;
             commentsArr.push(e)
         })
     });
     ctx.response.body = commentsArr;
 }
-app.use(route.get('/comments',comments))
+route.get('/comments',comments)
 
 
-//在线生成markdown文件
+/**
+ * desc: 删除一个评论
+ */
+const deleteOneComment = (ctx,next) =>{
+    let params = ctx.request.query;
+    console.log(params);
+    let id = params.id;
+    let category = params.category;
+    let index = params.index;
+    let commentItem = "comments." + index;
+    
+    try{
+        /**
+         * desc:为将要删除的数组项增添index属性
+         */
+        let obj = {};
+        obj[commentItem] = {
+            "index":index
+        }
+        db.collection(category+'mds').update({'_id':ObjectId(id)},{$set:obj}).then(()=>{
+            /**
+             * desc:搜索匹配的选项并删除
+             */
+            db.collection(category+'mds').update({'_id':ObjectId(id)},{$pull:
+                {
+                    "comments":{
+                        "index":index       
+                    }
+                }
+            })
+        })
+        ctx.response.body = "删除成功！"            
+    }catch(e){
+        console.log(e)
+    }
+}
+route.del('/delete',deleteOneComment)
+
+/*
+** desc:在线生成markdown文件
+*/
 const path = require('path')
 const mdDir = path.dirname(__dirname)+"\\src\\article\\online"
-// let mdName = ""
 const markdown = ctx => {
     let content = ctx.request.body.value
     let header = ctx.request.body.header
@@ -154,7 +213,8 @@ const markdown = ctx => {
     })
     ctx.response.body = "md文档生成成功"
 }
-app.use(route.post('/markdown', markdown))
+route.post('/markdown', markdown)
+app.use(route.routes())
 
 // var proxy = require('koa-proxy');
 // app.use(route.get('index.js', proxy({
@@ -178,7 +238,6 @@ app.use(route.post('/markdown', markdown))
 //   logs: true
 // }))
 
-const Router = require('koa-router')
 const c2k = require('koa2-connect')
 const proxy = require('http-proxy-middleware')
 var router = new Router()

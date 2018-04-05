@@ -42,7 +42,7 @@
                     <!-- <div @click='handleEdit(scope.$index, scope.row)' class="clearPadding"><update></update></div> -->
                     <!-- <div @click='handleCopy(scope.$index, scope.row)' class="clearPadding"><copy></copy></div>
                     <div @click='handleDelete(scope.$index, scope.row)' class="clearPadding"><turnon :finalDelData="finalDelData"></turnon></div>         -->
-                    <div @click='deleteComment' class="clearPadding"><turnoff></turnoff></div>
+                    <div @click='deleteComment(scope.$index,scope.row)' class="clearPadding"><turnoff></turnoff></div>
                 </template>
                 </el-table-column>
             </el-table>
@@ -117,11 +117,20 @@ export default {
         //     this.deleteIndex = index
         //     this.finalDelData = this.users[this.deleteIndex]
         // },
-        deleteComment(){
+        deleteComment(index,row){
+            console.log(index,row);
+            let id = row.id;
+            let category = row.category;
+            let i = row.index;
             Axios({
                 method: 'DELETE',
-                // url:'http://localhost:3001/comments',
-                url: 'https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/delete/:id'
+                url:'http://localhost:3001/delete',
+                params: {
+                    id:id,
+                    category:category,
+                    index:i
+                }
+                // url: 'https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/delete/:id'
             }).then((res)=>{
                 console.log(res)
             })
