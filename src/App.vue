@@ -12,19 +12,10 @@ export default {
 </script>
 
 <style>
-/* #app {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  width:100%;
-  height:100%;
-  background-color: #B7F5DE; 
-}*/
 body{
   padding: 0;
   margin: 0;
+  background-color: rgba(183,245,222,0.5);  
 }
 #app{
   padding:0;
@@ -34,7 +25,13 @@ body{
   height: 100%;
   width: 100%;
   position: absolute;
-  /* background-color: rgba(183,245,222,0.5); */
+}
+
+/*
+** desc: ./comments/editor.vue 左侧textarea高度 css tricks
+*/
+.el-textarea__inner{
+  height: 100%;
 }
 </style>
   

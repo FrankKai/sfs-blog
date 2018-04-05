@@ -159,13 +159,12 @@ export default {
     }
     .user-header{
         margin: 10px;
-        background:#fff;
         padding:10px;
         clear: both;    
     }
     .user-body{
         width: 70%;
-        background:#fff;
+        margin-top:10px;
     }
     .body-header{
         display: inline-block;        
@@ -174,7 +173,6 @@ export default {
     }
     .userList{
         text-align:left;
-        background:#fff;
     }
     .addUser{
         text-align:right;

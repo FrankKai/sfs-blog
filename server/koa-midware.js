@@ -16,6 +16,7 @@ var categories = {
 var obj2 = {}
 
 const fs = require("fs")
+
 function a(){
 /*
 ** desc:读取每个目录下的文章
@@ -203,40 +204,43 @@ route.del('/delete',deleteOneComment)
 ** desc:在线生成markdown文件
 */
 const path = require('path')
-const mdDir = path.dirname(__dirname)+"\/src\/article\/online"
+const mdDir = path.dirname(__dirname)+"\/src\/article\/categories\/"
 const markdown = ctx => {
     let content = ctx.request.body.value
     let header = ctx.request.body.header
-    fs.writeFile(mdDir+'/'+header+'.md',content,(err)=>{
+    let category = ctx.request.body.category
+    fs.writeFile(mdDir + category +'/'+header+'.md',content,(err)=>{
         if(err) throw err;
         // console.log("自动生成markdown成功")
     })
     ctx.response.body = "md文档生成成功"
 }
 route.post('/markdown', markdown)
+
+/*
+** desc:获取目录列表接口
+*/
+const categoriesPath = path.dirname(__dirname)+"\/src\/article\/categories"
+let categoryList = [];
+fs.readdir(categoriesPath,(err,categories)=>{
+    // categoryList = {...categories};
+    let item = {};
+    categories.map((e,i,arr)=>{
+        item.label = e;
+        item.value = e;
+        item.key = i;
+        categoryList.push(item)
+        item = {};
+    })
+})
+const category = ctx =>{
+    ctx.response.body = categoryList;
+}
+route.get('/category',category)
+
+
 app.use(route.routes())
 
-// var proxy = require('koa-proxy');
-// app.use(route.get('index.js', proxy({
-//     url: 'http://alicdn.com/index.js'
-//   })));
-
-
-// const octocat = ctx => {
-//     ctx.response.body = "koa proxy success";
-// }
-// app.use(route.get('/octocat', octocat))
-// middleware
-// const proxy = require('koa-proxies')
-// const httpsProxyAgent = require('https-proxy-agent')
-// console.log(proxy)
-// app.use(proxy('/octocat', {
-//   target: 'https://api.github.com/users',    
-//   changeOrigin: true,
-//   agent: new httpsProxyAgent('http://1.2.3.4:88'),
-//   rewrite: path => path.replace(/^\/octocat(\/|\/\w+)?$/, '/emojis'),
-//   logs: true
-// }))
 
 const c2k = require('koa2-connect')
 const proxy = require('http-proxy-middleware')
