@@ -203,7 +203,7 @@ route.del('/delete',deleteOneComment)
 ** desc:在线生成markdown文件
 */
 const path = require('path')
-const mdDir = path.dirname(__dirname)+"\\src\\article\\online"
+const mdDir = path.dirname(__dirname)+"\/src\/article\/online"
 const markdown = ctx => {
     let content = ctx.request.body.value
     let header = ctx.request.body.header

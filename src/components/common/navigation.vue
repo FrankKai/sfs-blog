@@ -9,6 +9,7 @@
       <router-link to='/category'>目录</router-link>
       <router-link to='/record'>归档</router-link>
       <router-link to='/tag'>标签</router-link>
+      <router-link to='/admin'>评论管理</router-link>      
       <router-link to='/editor'>写文章</router-link>            
       <router-link to='/home'>返回封面</router-link>
       <!-- <el-button @click="koaProxyTest">koa2 proxy test</el-button> -->

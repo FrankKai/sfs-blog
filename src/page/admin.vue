@@ -1,42 +1,50 @@
 <template>
     <div class="admin">
-        <div class="user-header">
-            <!-- <retrive></retrive> -->
+        <div class="sidebar">
+            <blogger></blogger>
+            <timestamp></timestamp>
         </div>
+        <navigation></navigation>
         <div class="user-body">
             <div class="body-header">
             <el-row :gutter="20">
-                <el-col :span="16"><div class="userList">评论列表</div></el-col>
+                <el-col><div class="userList">评论列表</div></el-col>
                 <!-- <el-col :span="8"><div class="addUser"><create></create></div></el-col> -->
             </el-row>
             </div>
             <div class="body-content">
             <el-table
                 :data="users"
-                border
-                style="width: 100%">
+                border>
+                <el-table-column
+                prop="article"
+                label="文章"
+                show-overflow-tooltip
+                >
+                </el-table-column>
                 <el-table-column
                 prop="name"
-                label="昵称">
+                label="昵称"
+                show-overflow-tooltip
+                >
                 </el-table-column>
                 <el-table-column
                 prop="email"
                 label="邮箱"
-                >
-                </el-table-column>
-                <el-table-column
-                prop="article"
-                label="文章"
+                show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
                 prop="content"
                 label="评论"
+                width="300"
+                show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
                 label="功能"
-                width="300"
+                width="80"
+                show-overflow-tooltip
                 >
                 <template scope="scope">
                     <!-- <div @click='handleEdit(scope.$index, scope.row)' class="clearPadding"><update></update></div> -->
@@ -56,20 +64,16 @@
     </div>
 </template>
 <script>
-// 引入CRUD等子组件和mapGetters
-// import create from '../components/create'
-// import retrive from '../components/retrive'
 import update from '../components/admin/update'
-// import copy from '../components/copy'
-// import turnon from '../components/turnon'
 import turnoff from '../components/admin/turnoff'
-// import pag from '../components/pag'
-// import {mapGetters} from 'vuex'
 import Axios from 'axios';
+import navigation from '../components/common/navigation.vue'
+import blogger from '../components/blog/blogger.vue'
+import timestamp from '../components/blog/timestamp.vue'
 
 export default {
     name: 'admin',
-    components:{update,turnoff},
+    components:{update,turnoff,navigation,blogger,timestamp},
     created () {
 
         // this.userName = location.search.substring(10)
@@ -154,24 +158,32 @@ export default {
     border-radius: 4px;
     }
     .user-header{
-    background:#fff;
-    padding:10px;
-    margin:10px;
+        margin: 10px;
+        background:#fff;
+        padding:10px;
+        clear: both;    
     }
     .user-body{
-    margin:10px;
-    background:#fff;
+        width: 70%;
+        background:#fff;
     }
     .body-header{
-    padding:10px;
-    font-weight:bold;
+        display: inline-block;        
+        padding: 10px 0;
+        font-weight:bold;
     }
     .userList{
-    text-align:left;
-    padding:10px 15px;
-    background:#fff;
+        text-align:left;
+        background:#fff;
     }
     .addUser{
-    text-align:right;
+        text-align:right;
+    }
+    .admin{
+        width: 80%;
+    }
+    .sidebar{
+        float:right;
+        width: 30%;
     }
 </style>
