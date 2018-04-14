@@ -30,7 +30,7 @@ export default {
     }
   },
   created(){
-    let data = this.$store.state.data[0]
+    let data = this.$store.state.data.blog
     let arr = []
     let disarr = []
     let obj = {}

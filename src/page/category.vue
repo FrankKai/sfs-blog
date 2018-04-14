@@ -40,7 +40,7 @@ export default {
   },
   computed:{
     categories(){
-      return this.$store.state.data[1]
+      return this.$store.state.data.category
     }
     // arcindex(){
     //   return this.index

@@ -41,7 +41,7 @@ export default {
       return this.index
     },
     tags(){
-      return this.$store.state.data[0][this.index].tags
+      return this.$store.state.data.blog[this.index].tags
     },
     imgSrc(){
       return this.imgsrc

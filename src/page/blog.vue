@@ -49,7 +49,7 @@ export default {
   },
   computed:{
       articles(){
-        return this.$store.state.data[0]
+        return this.$store.state.data.blog
       }
   }
 }
