@@ -5,6 +5,7 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
+
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
@@ -14,8 +15,6 @@ var webpackConfig = (process.env.NODE_ENV === 'testing' || process.env.NODE_ENV 
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
 
-// default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
@@ -65,7 +64,10 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-var uri = 'http://localhost:' + port
+// default port where dev server listens for incoming traffic
+var port = process.env.PORT || config.dev.port
+var host = process.env.HOST || config.dev.host
+var uri = host + port
 
 var _resolve
 var readyPromise = new Promise(resolve => {

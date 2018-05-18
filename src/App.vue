@@ -6,8 +6,17 @@
 </template>
   
 <script>
+import axiosService from 'util/axios.js';
 export default {
-  name: 'app'
+  name: 'app',
+  // mounted(){
+  //   axiosService({
+  //     method:'get',
+  //     url:"/axsssos"
+  //   }).then((res)=>{
+  //     console.log(res);
+  //   })
+  // }
 }
 </script>
 
@@ -34,4 +43,3 @@ body{
   height: 100%;
 }
 </style>
-  

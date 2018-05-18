@@ -97,7 +97,17 @@ var webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ])
-  ]
+  ],
+  resolve:{
+    //解析扩展名
+    extensions: ['.js','vue'],
+    alias: {
+      //快捷访问入口
+      'util':path.resolve(__dirname,'../src/util'),
+      'config':path.resolve(__dirname,'../src/config')
+    }
+  },
+  devtool: 'eval-source-map'
 })
 
 if (config.build.productionGzip) {

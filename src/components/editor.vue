@@ -28,7 +28,7 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import axios from 'axios'
+import axiosService from 'util/axios.js';
 export default {
   name: 'editor',
   template: '<editor/>',
@@ -36,18 +36,18 @@ export default {
     VueMarkdown
   },
   created(){
-    axios({
+    axiosService({
       method:'get',
-      url:"http://localhost:3001/category"
+      url:"/category"
     }).then((res)=>{
       this.options = res.data
     })
   },
   methods:{
     createMarkdown:function(){
-      axios({
+      axiosService({
         method:'post',
-        url:'http://localhost:3001/markdown',
+        url:'/markdown',
         data:this.content
       }).then((response) => {
         console.log(response);

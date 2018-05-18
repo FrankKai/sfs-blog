@@ -66,7 +66,7 @@
 <script>
 import update from '../components/admin/update'
 import turnoff from '../components/admin/turnoff'
-import Axios from 'axios';
+import axiosService from 'util/axios.js';
 import navigation from '../components/common/navigation.vue'
 import blogger from '../components/blog/blogger.vue'
 import timestamp from '../components/blog/timestamp.vue'
@@ -91,9 +91,9 @@ export default {
         // }
     },
     mounted(){
-        Axios({
+        axiosService({
             method: 'get',
-            url:'http://localhost:3001/comments',            
+            url:'/comments',            
             // url: "https://www.easy-mock.com/mock/5aab842b82fe290e7f22d91a/retrive"
         }).then((response) => {
             console.log(response)
@@ -126,9 +126,9 @@ export default {
             let id = row.id;
             let category = row.category;
             let i = row.index;
-            Axios({
+            axiosService({
                 method: 'DELETE',
-                url:'http://localhost:3001/delete',
+                url:'/delete',
                 params: {
                     id:id,
                     category:category,

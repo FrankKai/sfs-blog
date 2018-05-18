@@ -21,7 +21,8 @@
   </template>
   
   <script>
-   import axios from 'axios'
+  //  import axios from 'axios'
+   import axiosService from 'util/axios.js';
    export default {
     data() {
       var checkName = (rule, value, callback) => {
@@ -75,9 +76,9 @@
             alert('submit!');
             /*push到指定文章的评论数组中*/
             this.commentObj.content = this.ruleForm2
-            axios({
+            axiosService({
               method:'post',
-              url:'http://localhost:3001/comment',
+              url:'/comment',
               data:this.commentObj
             }).then((response) => {
               console.log(response);

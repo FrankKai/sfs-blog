@@ -1,5 +1,6 @@
 const koa = require('koa');
 const app = new koa();
+const config = require('./config')
 /*
 ** desc:跨域配置
 */
@@ -15,4 +16,12 @@ app.use(koaBody());
 
 const router = require('./routes/index.js');
 app.use(router.routes());
-app.listen(3001); 
+
+var port = 3001;
+
+if(process.env.NODE_ENV == "development"){
+    port = config.dev.port;
+}else if(process.env.NODE_ENV == "production"){
+    port = config.prod.port;    
+}
+app.listen(port); 
