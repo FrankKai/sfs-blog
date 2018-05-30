@@ -16,11 +16,11 @@ const deleteOneComment = (ctx,next) =>{
         obj[commentItem] = {
             "index":index
         };
-        db.collection(category+'mds').update({'_id':ObjectId(id)},{$set:obj}).then(()=>{
+        db.collection("articlelists").update({'_id':ObjectId(id)},{$set:obj}).then(()=>{
             /**
              * desc:搜索匹配的选项并删除
              */
-            db.collection(category+'mds').update({'_id':ObjectId(id)},{$pull:
+            db.collection("articlelists").update({'_id':ObjectId(id)},{$pull:
                 {
                     "comments":{
                         "index":index       

@@ -87,6 +87,7 @@ function readCategoryFiles(){
                                         articleRemote={}
                                     }
                                 })
+                                console.log(mdDataBlog)
                             }
                         })
                     })

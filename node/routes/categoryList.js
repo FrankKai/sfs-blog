@@ -8,7 +8,7 @@ let list = [];
 fs.readdir(categoriesPath,(err,categories)=>{
     // categoryList = {...categories};
     console.log(categoriesPath);
-    let item = [];
+    let item = {};
     categories.map((e,i,arr)=>{
         item.label = e;
         item.value = e;
