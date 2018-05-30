@@ -1,7 +1,10 @@
 <template>
   <div class="articlelists">
-    {{msg}}
-    {{msg}}
+    <div class="sidebar">
+      <blogger></blogger>
+      <timestamp></timestamp>
+    </div>
+    <navigation></navigation>
     <ul>
         <li v-for="article in articles" :key="article" @click="filteArticle(article)">
           <router-link :to="'/category'+'/'+name+'/'+article.slice(0,-3)">
@@ -16,9 +19,14 @@
 // import dataApi from '../../api/dataapi'
 // import { FILTE_CATEGORY_ARTICLE,SET_DATA,FILTE_ARTICLES } from '../../store/mutation-types'
 import { FILTE_ARTICLES } from '../../store/mutation-types'
+import navigation from '../common/navigation.vue'
+import blogger from '../blog/blogger.vue'
+import timestamp from '../blog/timestamp.vue'
+
 export default {
   name: 'articlelists',
   template: '<articlelists/>',
+  components: {navigation,blogger,timestamp},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -68,6 +76,7 @@ width: 80%;
   ul{
     padding: 0;
     margin: 0;
+    width: 70%;
     li{
       list-style: none;
       a{
@@ -85,6 +94,10 @@ width: 80%;
       }
     }
   };
+}
+.sidebar{
+  float: right;
+  width: 30%;
 }
   
 </style>

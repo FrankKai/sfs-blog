@@ -6,5 +6,5 @@ const config = {
 const url = config.host + config.project;
 export default {
     url: url,
-    mockCtrl: true
+    mockCtrl: false
 };
