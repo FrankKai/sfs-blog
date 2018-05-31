@@ -45,21 +45,18 @@ function readCategoryFiles(){
                                 let stat = fs.statSync(smd)
                                 articleLocal.birthtime = stat.birthtime
                                 
-                                // db.once('open',function(){
-                                    create(
-                                        articleLocal.title,
-                                        new Date(),
-                                        articleLocal.title,
-                                        'subtitle',
-                                        cat,
-                                        ['elementUI','vuex','vueRouter','axios'],
-                                        '5678',
-                                        "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
-                                        [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
-                                    )
-                                // })
-                                // console.log("articleLocal:",articleLocal)
-                                // console.log("stat:",stat)
+                                create(
+                                    articleLocal.title,
+                                    new Date(),
+                                    articleLocal.title,
+                                    'subtitle',
+                                    cat,
+                                    ['elementUI','vuex','vueRouter','axios'],
+                                    '5678',
+                                    "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
+                                    [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
+                                )
+
                                 /**
                                  * 替换content
                                  */
@@ -87,7 +84,6 @@ function readCategoryFiles(){
                                         articleRemote={}
                                     }
                                 })
-                                console.log(mdDataBlog)
                             }
                         })
                     })
