@@ -4,7 +4,7 @@ const db = require('../service/db.js');
 // const mdDataBlog = [];
 // const mdDataCategory = [];
 const mdDataBlog = []; // blog前端路由文章列表数据
-const path = '../src/article/categories';
+const path = '../node/article/categories';
 
 const create = require("./create.js");
 
@@ -45,22 +45,22 @@ function readCategoryFiles(){
                                 let stat = fs.statSync(smd)
                                 articleLocal.birthtime = stat.birthtime
                                 
-                                create(
-                                    articleLocal.title,
-                                    new Date(),
-                                    articleLocal.title,
-                                    'subtitle',
-                                    cat,
-                                    ['elementUI','vuex','vueRouter','axios'],
-                                    '5678',
-                                    "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
-                                    [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
-                                )
+                                // create(
+                                //     articleLocal.title,
+                                //     new Date(),
+                                //     articleLocal.title,
+                                //     'subtitle',
+                                //     cat,
+                                //     ['elementUI','vuex','vueRouter','axios'],
+                                //     '5678',
+                                //     "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
+                                //     [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
+                                // )
 
                                 /**
                                  * 替换content
                                  */
-                                db.collection('articlelists').updateMany({title:articleLocal.title},{$set:{content:articleLocal.content}})
+                                // db.collection('articlelists').updateMany({title:articleLocal.title},{$set:{content:articleLocal.content}})
                                 // db.collection('frontendmds').updateMany({title:articleLocal.title},{$set:{content:articleLocal.content}})
                                 
                                 /**

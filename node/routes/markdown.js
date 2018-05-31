@@ -12,6 +12,7 @@ const markdown = ctx => {
     let header = ctx.request.body.header;
     let category = ctx.request.body.category;
     let tags = ctx.request.body.dynamicTags;
+    let url = ctx.request.body.imgUrl;
     
     fs.writeFile(mdDir + category +'/'+header+'.md',content,(err)=>{
         if(err) throw err;
@@ -32,8 +33,8 @@ const markdown = ctx => {
         category,
         tags,
         content,
-        "http://ov6jc8fwp.bkt.clouddn.com/Taylor%20Swift.jpg",
-        [{name:"jack",email:"jack@gmail.com",content:"hello front bar jack"},{name:"rose",email:"rose@gmail.com",content:"hello front bar rose"}]
+        url,
+        []
     )
 //    db.collection('articlelists').update({title:header},{$set:{tags:tags}})
 

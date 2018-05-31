@@ -5,7 +5,7 @@
     </div>
     <div class="article">
       <el-input type="text" placeholder="请输入文章标题" v-model="content.header"></el-input>
-      <el-select v-model="content.category" placeholder="请选择">
+      <el-select v-model="content.category" placeholder="请选择目录">
         <el-option
           v-for="item in options"
           :key="item.key"
@@ -35,6 +35,9 @@
     >
     </el-input>
     <el-button v-else class="button-new-tag" size="small" @click="showInput">+ 标签</el-button>
+    </div>
+    <div class="background-img">
+      <el-input type="text" placeholder="请输入文章背景图片url" v-model="content.imgUrl"></el-input>
     </div>
     <div class="left">
       <el-input type="textarea" v-model="content.value"></el-input>
@@ -102,7 +105,8 @@ export default {
         header:'',
         value:'hello world',
         category:'',
-        dynamicTags: []
+        dynamicTags: [],
+        imgUrl:""
       },
       options: [{
         value: '选项1',
@@ -186,6 +190,9 @@ export default {
     vertical-align: bottom;
   }
   .tag-list{
+    margin: 10px 0 0;
+  }
+  .background-img{
     margin: 10px 0 0;
   }
 </style>
