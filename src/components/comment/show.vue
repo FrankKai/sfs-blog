@@ -4,7 +4,7 @@
         <li v-for="item in commentsList">
           <h5 class="name">昵称：{{item.name}}</h5>
           <span class="email">邮箱：{{item.email}}</span>
-          <p>评论：{{item.content}}</p>
+          <p>评论：{{item.comment}}</p>
         </li>
       </ul>
     </div>

@@ -35,7 +35,7 @@
                 >
                 </el-table-column>
                 <el-table-column
-                prop="content"
+                prop="comment"
                 label="评论"
                 width="300"
                 show-overflow-tooltip

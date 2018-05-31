@@ -1,4 +1,5 @@
 const db = require('../service/db.js');
+const ObjectId = require('mongodb').ObjectID;
 
 const deleteOneComment = (ctx,next) =>{
     let params = ctx.request.query;

@@ -4,7 +4,7 @@ const db = require('../service/db.js');
 // const mdDataBlog = [];
 const mdDataCategory = [];
 // const mdDataBlog = []; // blog前端路由文章列表数据
-const path = '../src/article/categories';
+const path = '../node/article/categories';
 
 /*
 ** desc:统计目录文件数目

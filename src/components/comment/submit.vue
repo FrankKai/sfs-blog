@@ -73,7 +73,7 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            // alert('submit!');
             /*push到指定文章的评论数组中*/
             this.commentObj.content = this.ruleForm2
             axiosService({

@@ -6,6 +6,7 @@ const comment = ctx => {
     /*
     ** desc:存数据到数据库
     */
+   console.log(data);
     db.collection("articlelists").update({name:data.mdname},{$push:{comments:data.content}})
     ctx.response.body = "评论添加成功了吗？"
 };
