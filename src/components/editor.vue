@@ -15,6 +15,27 @@
       </el-select>
       <el-button type="primary" class="button" @click="createMarkdown()">生成</el-button>
     </div>
+    <div class="tag-list">
+      <el-tag
+      :key="tag"
+      v-for="tag in content.dynamicTags"
+      closable
+      :disable-transitions="false"
+      @close="handleClose(tag)">
+      {{tag}}
+    </el-tag>
+    <el-input
+      class="input-new-tag"
+      v-if="inputVisible"
+      v-model="inputValue"
+      ref="saveTagInput"
+      size="small"
+      @keyup.enter.native="handleInputConfirm"
+      @blur="handleInputConfirm"
+    >
+    </el-input>
+    <el-button v-else class="button-new-tag" size="small" @click="showInput">+ 标签</el-button>
+    </div>
     <div class="left">
       <el-input type="textarea" v-model="content.value"></el-input>
     </div>
@@ -52,7 +73,26 @@ export default {
       }).then((response) => {
         console.log(response);
       })
-    }
+    },
+    handleClose(tag) {
+        this.content.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+      },
+
+      showInput() {
+        this.inputVisible = true;
+        this.$nextTick(_ => {
+          this.$refs.saveTagInput.$refs.input.focus();
+        });
+      },
+
+      handleInputConfirm() {
+        let inputValue = this.inputValue;
+        if (inputValue) {
+          this.content.dynamicTags.push(inputValue);
+        }
+        this.inputVisible = false;
+        this.inputValue = '';
+      }
   },
   data () {
     return {
@@ -61,7 +101,8 @@ export default {
       content: {
         header:'',
         value:'hello world',
-        category:''
+        category:'',
+        dynamicTags: []
       },
       options: [{
         value: '选项1',
@@ -79,7 +120,9 @@ export default {
         value: '选项5',
         label: '北京烤鸭'
       }],
-      value: ''
+      value: '',
+        inputVisible: false,
+        inputValue: ''
     }
   }
 }
@@ -126,4 +169,23 @@ export default {
     transform: translate(0,0)
   }
 }
+
+.el-tag + .el-tag {
+    margin-left: 10px;
+  }
+  .button-new-tag {
+    // margin-left: 10px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .input-new-tag {
+    width: 90px;
+    margin-left: 10px;
+    vertical-align: bottom;
+  }
+  .tag-list{
+    margin: 10px 0 0;
+  }
 </style>
