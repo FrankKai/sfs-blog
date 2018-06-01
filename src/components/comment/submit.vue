@@ -83,6 +83,7 @@
             }).then((response) => {
               console.log(response);
             })
+            this.$socket.emit('comment', 'update comment')
           } else {
             console.log('error submit!!');
             return false;

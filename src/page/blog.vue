@@ -24,11 +24,10 @@ import briefarticle from '../components/blog/briefarticle.vue'
 import blogger from '../components/blog/blogger.vue'
 import timestamp from '../components/blog/timestamp.vue'
 import dataApi from '../api/dataapi'
-import { SET_DATA } from '../store/mutation-types'
+import { SET_DATA} from '../store/mutation-types'
 // import Category from './category.vue'
 // import Article from './article.vue'
 // import VueMarkdown from 'vue-markdown'
-
 
 
 export default {

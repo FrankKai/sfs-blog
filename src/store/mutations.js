@@ -6,7 +6,8 @@ export default {
 	},
 	[FILTE_ARTICLE](state, index) {
 		// state._cache = common.deepCopy(data);
-		state.currentArticle = state.data.blog[index];
+		state.currentArticle = Object.assign({},state.data.blog[index]);
+		state.currentArticle.index = index;
 	},
 	[FILTE_ARTICLES](state, index) {
 		// console.log(index)

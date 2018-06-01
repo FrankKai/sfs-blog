@@ -1,5 +1,6 @@
 const fs = require('fs');
 const db = require('../service/db.js');
+const emitter = require('./emitter');
 
 // const mdDataBlog = [];
 // const mdDataCategory = [];
@@ -120,7 +121,12 @@ function readCategoryFiles(){
 //         }
 //     })
 // }
+emitter.on('event', () => {
+    mdDataBlog.splice(0,mdDataBlog.length);
+    readCategoryFiles();
+});
 readCategoryFiles();
 // categoryFilesCount();
+
 
 module.exports = mdDataBlog;

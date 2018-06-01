@@ -6,6 +6,10 @@ import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import store from './store'
+import VueSocketio from 'vue-socket.io';
+import socketio from 'socket.io-client';
+Vue.use(VueSocketio, 'http://localhost:3001');
+Vue.use(VueSocketio, socketio('http://localhost:3001'));
 // import Bootstrap from 'bootstrap'
 // import Jquery from 'jquery'
 // import store from './store/'

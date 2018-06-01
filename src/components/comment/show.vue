@@ -11,12 +11,40 @@
   </template>
   
   <script>
+  import { SET_DATA,FILTE_ARTICLE } from '../../store/mutation-types';
+  import dataApi from '../../api/dataapi';
+  // import asyncFlow from 'async';
   export default {
     name: 'show',
     template: '<show/>',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
+      }
+    },
+    sockets:{
+      connect: function(){
+        // this.id=this.$socket.id
+      },
+      commentUpdate: function(val){
+        let that = this;
+        // asyncFlow.series([
+        //     function(callback) { 
+        //       dataApi.getData(data => {
+        //       console.log(data);
+        //       that.$store.commit(SET_DATA,data);
+        //     }); },
+        //     function(callback) { that.$store.commit(FILTE_ARTICLE,this.$store.state.currentArticle.index); }
+        // ])
+
+        dataApi.getData(data => {
+          console.log(data);
+          that.$store.commit(SET_DATA,data)
+        })
+        setTimeout(function(){
+          that.$store.commit(FILTE_ARTICLE,that.$store.state.currentArticle.index);
+        },100)
+        console.log(val)
       }
     },
     computed:{

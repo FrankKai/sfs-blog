@@ -15,6 +15,7 @@ import VueMarkdown from 'vue-markdown'
 import Submit from '../comment/submit.vue'
 import Show from '../comment/show.vue'
 import Navigation from '../common/navigation.vue'
+
 // import Axios from 'axios'
 export default {
     name: 'article',

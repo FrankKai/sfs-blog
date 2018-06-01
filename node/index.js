@@ -1,6 +1,11 @@
 const koa = require('koa');
 const app = new koa();
+const server = require('http').createServer(app.callback());
+const io = require("socket.io")(server);
 const config = require('./config')
+const emitter = require('./service/emitter');
+const async = require('async');
+
 /*
 ** desc:跨域配置
 */
@@ -24,4 +29,22 @@ if(process.env.NODE_ENV == "development"){
 }else if(process.env.NODE_ENV == "production"){
     port = config.prod.port;    
 }
-app.listen(port); 
+
+
+io.on('connection', function(socket){
+    socket.on('comment', function(msg){        
+        console.log(msg);
+        emitter.emit('event');
+        setTimeout(function(){
+            io.emit('commentUpdate', msg);
+        },100)
+        // async.series([
+        //     function(callback) {  },
+        //     function(callback) {  }
+        // ])
+    });
+});
+
+server.listen(port,function(){
+    console.log('listening on :' + port);
+}); 

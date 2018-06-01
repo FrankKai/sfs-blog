@@ -46,7 +46,7 @@
                 width="80"
                 show-overflow-tooltip
                 >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <!-- <div @click='handleEdit(scope.$index, scope.row)' class="clearPadding"><update></update></div> -->
                     <!-- <div @click='handleCopy(scope.$index, scope.row)' class="clearPadding"><copy></copy></div>
                     <div @click='handleDelete(scope.$index, scope.row)' class="clearPadding"><turnon :finalDelData="finalDelData"></turnon></div>         -->

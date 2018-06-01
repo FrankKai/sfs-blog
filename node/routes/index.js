@@ -8,8 +8,8 @@ const markdown = require('./markdown');
 const categoryList = require('./categoryList');
 
 router
-    .get('/main',main)
     .post('/comment',comment)
+    .get('/main',main)
     .get('/comments',comments)
     .del('/delete',deleteOneComment)
     .post('/markdown', markdown)

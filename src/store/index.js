@@ -8,7 +8,9 @@ Vue.use(Vuex)
 const state = {
     data: '',
 	// articles: []
-	currentArticle: '',
+	currentArticle: {
+		index: 0
+	},
 	currentArticles: {
 		name:'',
 		data:[]
