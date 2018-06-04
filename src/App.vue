@@ -4,7 +4,7 @@
     <router-view></router-view>
   </div>
 </template>
-  
+
 <script>
 import axiosService from 'util/axios.js';
 export default {
@@ -17,6 +17,7 @@ export default {
   //     console.log(res);
   //   })
   // }
+  //测试webstorm commit
 }
 </script>
 
@@ -24,7 +25,7 @@ export default {
 body{
   padding: 0;
   margin: 0;
-  background-color: rgba(183,245,222,0.5);  
+  background-color: rgba(183,245,222,0.5);
 }
 #app{
   padding:0;
