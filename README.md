@@ -115,3 +115,6 @@ npm run mkmd || node ./server/md-auto.js
 		* main.js--------------------------------------------创建vue实例，挂载app，传入vue-router，vuex实例。
 
 //commit test
+
+
+prtest1
