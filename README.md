@@ -121,8 +121,6 @@ prtest1
 
 prtest2
 
-prtest2
-
 all1
 
 all2
