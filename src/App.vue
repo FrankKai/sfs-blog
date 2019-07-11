@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
     <router-view></router-view>
   </div>
 </template>
@@ -9,15 +8,6 @@
 import axiosService from 'util/axios.js';
 export default {
   name: 'app',
-  // mounted(){
-  //   axiosService({
-  //     method:'get',
-  //     url:"/axsssos"
-  //   }).then((res)=>{
-  //     console.log(res);
-  //   })
-  // }
-  //测试webstorm commit
 }
 </script>
 

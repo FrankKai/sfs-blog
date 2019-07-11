@@ -21,7 +21,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+node build/dev-server.js
 
 ```
 ## BackEnd Build Setup
@@ -30,18 +30,15 @@ npm run dev
 # open mongodb port 27017
 mongod
 
-# build data model in mongodb
-node ./server/db-data.js
-
-# get and splice complete data to frontend
-node ./server/koa-midware.js
+# build data model in mongodb && get and splice complete data to frontend
+node ./server/index.js
 
 ```
 ## Other Build Setup
 
 ``` bash
 # autogenerate markdown file
-npm run mkmd || node ./server/md-auto.js
+node ./server/helper/md-auto.js
 
 ```
 
@@ -83,20 +80,19 @@ npm run mkmd || node ./server/md-auto.js
 
 ## 目录结构梳理
 	* server-------------------------------------------------后端服务
-		* db-data.js-----------------------------------------db初始化数据
-		* koa-midware.js-------------------------------------数据中转开放api给前端
-		* md-auto.js-----------------------------------------命令行式生成markdown
+		* article--------------------------------------------存储文章
+		* config.js------------------------------------------配置文件
+		* helper---------------------------------------------项目帮手
+		* routes---------------------------------------------node路由
+		* service--------------------------------------------node服务
 	* src ---------------------------------------------------前端展现
 		* api -----------------------------------------------切换生产环境和开发环境，数据集中获取
-		* article--------------------------------------------存放markdown文档
-			* categories-------------------------------------markdown分类
 		* assets---------------------------------------------静态图片资源
 		* components-----------------------------------------功能组件
 			* blog-------------------------------------------博客组件
 			* category---------------------------------------归档组件
 			* comment----------------------------------------评论组件
 			* common-----------------------------------------通用组件（当前只包含nav组件）
-		* demo-----------------------------------------------例子
 		* page-----------------------------------------------SPA
 			* blog.vue---------------------------------------博客页
 			* category.vue-----------------------------------目录页
@@ -114,16 +110,23 @@ npm run mkmd || node ./server/md-auto.js
 		* App.vue--------------------------------------------页面路由父容器
 		* main.js--------------------------------------------创建vue实例，挂载app，传入vue-router，vuex实例。
 
-//commit test
 
-start 
+## FAQ
+1. 依赖安装失败怎么办？
+```
+//设置淘宝镜像源
+npm config -g set registry https://registry.npm.taobao.org
+// 安装cnpm
+sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+// 安装依赖
+cnpm install
+```
+2. macOS环境下mongodb启动失败怎么办？
+```
+brew tap mongodb/brew
+brew install mongodb-community@4.0
+mongod --config /usr/local/etc/mongod.conf
+```
 
-master 1
 
-master 2
-
-feature 1
-
-feature 2
-
-feature 3
+参考链接: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/

@@ -5,7 +5,7 @@ const emitter = require('./emitter');
 // const mdDataBlog = [];
 // const mdDataCategory = [];
 const mdDataBlog = []; // blog前端路由文章列表数据
-const path = '../node/article/categories';
+const path = '../server/article/categories';
 
 const create = require("./create.js");
 
