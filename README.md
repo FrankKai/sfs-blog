@@ -1,4 +1,5 @@
-> A simple fullstack blog
+# sfs-blog
+> simple full stack blog
 
 ## FrontEnd Build Setup
 
@@ -129,5 +130,4 @@ mongod --config /usr/local/etc/mongod.conf
 ![标签](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/标签.png)
 ### 文章详情
 ![文章详情](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/文章详情.png)
-# sfs-blog
 
