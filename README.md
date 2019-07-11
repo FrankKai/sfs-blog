@@ -34,9 +34,8 @@ node ./server/helper/md-auto.js
   * vuex
   * vue-router
   * axios
-* 中间件
-  * koa
 * 后端
+  * koa
   * mongodb
 
 ## 已完成列表
