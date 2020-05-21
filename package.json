@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "async": "^2.6.1",
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "element-ui": "^1.4.6",
     "fs": "0.0.1-security",
     "https-proxy-agent": "^2.1.1",
