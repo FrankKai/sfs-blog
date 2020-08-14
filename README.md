@@ -120,9 +120,6 @@ mongod --config /usr/local/etc/mongod.conf
 ## 项目预览
 
 ### 首页
-<p align="center">
-  <img src="https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/newcover.png" />
-</p>
 ![博客预览图](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/newcover.png)
 ### 博客
 ![博客](https://github.com/FrankKai/sfs-blog/blob/master/src/assets/images/博客.png)
