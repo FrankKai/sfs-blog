@@ -15,7 +15,7 @@ node build/dev-server.js
 
 ``` bash
 # open mongodb port 27017
-mongod
+mongod --dbpath ./data/db
 
 # build data model in mongodb && get and splice complete data to frontend
 node ./server/index.js
