@@ -6,6 +6,7 @@
 
 <script>
 import axiosService from "util/axios.js";
+
 export default {
   name: "app"
 };
@@ -40,5 +41,9 @@ body {
 
 h1 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

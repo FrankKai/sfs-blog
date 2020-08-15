@@ -2,6 +2,12 @@
   <div class="editor">
     <div class="header">
       <h1 class="header__title">{{ title }}</h1>
+      <a
+        class="header__guide"
+        href="https://guides.github.com/features/mastering-markdown/"
+        target="blank"
+        >markdown语法指南</a
+      >
       <el-button
         type="primary"
         class="header__return"
@@ -9,7 +15,6 @@
         size="small"
       >
         返回
-        <!-- <router-link class="header__return__btn" to="/blog">返回</router-link> -->
       </el-button>
     </div>
     <div class="article">
@@ -86,6 +91,7 @@
 <script>
 import VueMarkdown from "vue-markdown";
 import axiosService from "util/axios.js";
+
 export default {
   name: "editor",
   template: "<editor/>",
@@ -102,13 +108,41 @@ export default {
   },
   methods: {
     createMarkdown() {
+      if (!this.content.category) {
+        this.content.category = "默认";
+      }
+      if (!this.content.header) {
+        this.$message({
+          message: "文章标题不能为空",
+          type: "warning"
+        });
+        return;
+      }
       axiosService({
         method: "post",
         url: "/markdown",
         data: this.content
-      }).then(response => {
-        console.log(response);
-      });
+      })
+        .then(res => {
+          if (res.status === 200) {
+            this.$message({
+              message: res.data,
+              type: "success"
+            });
+            this.jumpToBlog();
+          } else {
+            this.$message({
+              message: res.data,
+              type: "error"
+            });
+          }
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: "error"
+          });
+        });
     },
     handleClose(tag) {
       this.content.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
@@ -135,12 +169,11 @@ export default {
   },
   data() {
     return {
-      title: "markdown文档在线生成器",
-      msg: "Welcome to Your Vue.js App",
+      title: "博客生成器",
       content: {
         header: "",
-        value: "hello world",
-        category: "",
+        value: "快开始写博客吧···",
+        category: "默认",
         dynamicTags: [],
         imgUrl: ""
       },
@@ -184,6 +217,12 @@ export default {
   .header {
     &__title {
       display: inline-block;
+    }
+    &__guide {
+      color: black;
+      &:hover {
+        color: #20a0ff;
+      }
     }
     &__return {
       float: right;

@@ -1,5 +1,4 @@
 const fs = require("fs");
-const db = require("../service/db.js");
 const create = require("../service/create.js");
 const emitter = require("../service/emitter");
 
@@ -9,11 +8,13 @@ const emitter = require("../service/emitter");
 const path = require("path");
 const mdDir = path.dirname(__dirname) + "/article/categories/";
 const markdown = ctx => {
-  let content = ctx.request.body.value;
-  let header = ctx.request.body.header;
-  let category = ctx.request.body.category;
-  let tags = ctx.request.body.dynamicTags;
-  let url = ctx.request.body.imgUrl;
+  const {
+    value: content,
+    header,
+    category,
+    dynamicTags: tags,
+    imgUrl: url
+  } = ctx.request.body;
 
   fs.writeFile(mdDir + category + "/" + header + ".md", content, err => {
     if (err) throw err;
@@ -36,7 +37,7 @@ const markdown = ctx => {
 
   emitter.emit("update-blog");
 
-  ctx.response.body = "md文档生成成功";
+  ctx.response.body = "博客生成成功";
 };
 
 module.exports = markdown;

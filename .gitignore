@@ -15,3 +15,4 @@ selenium-debug.log
 *.njsproj
 *.sln
 data/db
+*.md
