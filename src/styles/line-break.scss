@@ -1,0 +1,36 @@
+.line-break {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  &-clamp__1 {
+    -webkit-line-clamp: 1;
+  }
+  &-clamp__2 {
+    -webkit-line-clamp: 2;
+  }
+  &-clamp__3 {
+    -webkit-line-clamp: 3;
+  }
+  &-clamp__4 {
+    -webkit-line-clamp: 4;
+  }
+  &-clamp__5 {
+    -webkit-line-clamp: 5;
+  }
+  &-clamp__6 {
+    -webkit-line-clamp: 6;
+  }
+  &-clamp__7 {
+    -webkit-line-clamp: 7;
+  }
+  &-clamp__8 {
+    -webkit-line-clamp: 8;
+  }
+  &-clamp__9 {
+    -webkit-line-clamp: 9;
+  }
+  &-clamp__10 {
+    -webkit-line-clamp: 10;
+  }
+}

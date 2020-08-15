@@ -20,9 +20,11 @@
     <div class="article">
       <el-input
         type="text"
-        placeholder="请输入文章标题"
+        placeholder="输入文章标题，标题最大长度为50"
         v-model="content.header"
         size="small"
+        class="article_header"
+        :maxlength="50"
       ></el-input>
       <el-select
         v-model="content.category"
@@ -214,6 +216,7 @@ export default {
 }
 .editor {
   width: 80%;
+  margin: 20px 0;
   .header {
     &__title {
       display: inline-block;
@@ -254,8 +257,8 @@ export default {
 
 .article {
   clear: right;
-  .el-input {
-    width: auto;
+  &_header {
+    width: 400px;
   }
   .button {
     transform: translate(0, 0);

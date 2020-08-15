@@ -81,6 +81,7 @@
     "koa-router": "^7.3.0",
     "koa2-connect": "^1.0.2",
     "mocha": "^3.2.0",
+    "moment": "^2.27.0",
     "nightwatch": "^0.9.12",
     "node-sass": "^4.5.3",
     "normalize.css": "^8.0.1",

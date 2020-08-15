@@ -12,7 +12,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "styles/line-break";
+
 body {
   padding: 0;
   margin: 0;
@@ -39,7 +41,9 @@ body {
   box-sizing: border-box;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
