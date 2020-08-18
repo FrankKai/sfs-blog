@@ -3,7 +3,7 @@ const app = new koa();
 const server = require("http").createServer(app.callback());
 const io = require("socket.io")(server);
 const config = require("./config");
-const emitter = require("./service/emitter");
+const emitter = require("./emitter");
 const async = require("async");
 
 /*

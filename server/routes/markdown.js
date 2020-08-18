@@ -1,6 +1,6 @@
 const fs = require("fs");
 const create = require("../service/create.js");
-const emitter = require("../service/emitter");
+const emitter = require("../emitter");
 
 /*
  ** desc:在线生成markdown文件

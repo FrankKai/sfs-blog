@@ -1,5 +1,5 @@
 const db = require("../service/db.js");
-const emitter = require("../service/emitter");
+const emitter = require("../emitter");
 
 const comment = ctx => {
   let data = ctx.request.body;

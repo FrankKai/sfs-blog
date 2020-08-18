@@ -1,10 +1,8 @@
 const fs = require("fs");
 const db = require("../service/db.js");
-const emitter = require("./emitter");
-const mdDataBlog = []; // blog前端路由文章列表数据
+const emitter = require("../emitter");
+let mdDataBlog = []; // blog前端路由文章列表数据
 const path = "./server/article/categories";
-
-const create = require("./create.js");
 
 function readCategoryFiles() {
   /*
@@ -68,7 +66,14 @@ emitter.on("event", () => {
 readCategoryFiles();
 
 emitter.on("update-blog", () => {
-    readCategoryFiles();
+  mdDataBlog = [];
+  readCategoryFiles();
+});
+
+emitter.on("delete comment:update service blog", () => {
+  mdDataBlog = [];
+  readCategoryFiles();
+  emitter.emit("delete comment:update routes comments", mdDataBlog);
 });
 
 module.exports = mdDataBlog;
