@@ -23,3 +23,4 @@
 3.新增actions和eventbus
 4.修复数据冗余问题
 5.即时删除评论
+6.增加关闭mongod命令

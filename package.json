@@ -12,9 +12,10 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "server:mongo": "mongod --dbpath ./data/db",
     "server:node": "node --inspect ./server/app.js",
-    "pm2:start": "pm2 start ./server/app.js"
+    "pm2:start": "pm2 start ./server/app.js",
+    "mongo:start": "mongod --dbpath ./data/db --port 3002",
+    "mongo:stop": "kill $(lsof -t -i:3002)"
   },
   "dependencies": {
     "async": "^2.6.1",
