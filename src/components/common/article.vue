@@ -1,73 +1,122 @@
 <template>
-    <div class="article">
-        <!-- <vue-markdown>**test**</vue-markdown> -->
-        <navigation class="navigation"></navigation>
-        <img :src=imgsrc class="image"></img>
-        <h3 class="mdtitle">{{mdtitle}}</h3>
-        <vue-markdown class="article-content">{{article.content}}</vue-markdown>
-        <submit></submit>
-        <show></show>
+  <div class="article">
+    <div class="article-header article-common">
+      <navigation></navigation>
+      <h1 class="article-header__mdtitle">{{ computedArticle.title }}</h1>
     </div>
+    <div class="article-main article-common">
+      <div class="article-main__header">
+        正文
+      </div>
+
+      <div class="article-main__content">
+        <img
+          class="article-main__image"
+          v-if="computedArticle.imgSrc"
+          :src="computedArticle.imgSrc"
+        />
+        <vue-markdown class="article-content">{{
+          computedArticle.content
+        }}</vue-markdown>
+      </div>
+    </div>
+
+    <div class="article-footer article-common">
+      <div class="article-footer__submit article-footer-common">
+        <submit></submit>
+      </div>
+      <div class="article-footer__comments article-footer-common">
+        <show :commentsList="computedArticle.comments"></show>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
-import Submit from '../comment/submit.vue'
-import Show from '../comment/show.vue'
-import Navigation from '../common/navigation.vue'
+import { mapState } from "vuex";
+import VueMarkdown from "vue-markdown";
+import Submit from "../comment/submit.vue";
+import Show from "../comment/show.vue";
+import Navigation from "../common/navigation.vue";
 
-// import Axios from 'axios'
 export default {
-    name: 'article',
-    components:{VueMarkdown,Submit,Show,Navigation},
-    data () {
-        return {
-            msg: 'Welcome to Your Vue.js App',
-            mddata:[]
-        }
-    },
-    created() {
-
-    },
-    watch: {
-        mddata: function(){
-            
-        }
-    },
-    computed:{
-      article(){
-        return this.$store.state.currentArticle
-      },
-      imgsrc(){
-        return this.$store.state.currentArticle.imgSrc
-      },
-      mdtitle(){
-        return this.$store.state.currentArticle.title
+  name: "carticle",
+  components: { VueMarkdown, Submit, Show, Navigation },
+  data() {
+    return { computedArticle: null };
+  },
+  computed: {
+    ...mapState({
+      carticle: "currentArticle",
+      allData: "data"
+    }),
+    articleId() {
+      if ("id" in this.$route.query) {
+        return this.$route.query.id;
       }
     }
-}
+  },
+  watch: {
+    allData() {
+      this.updateArticle();
+    }
+  },
+  mounted() {
+    this.updateArticle();
+  },
+  methods: {
+    updateArticle() {
+      if (this.articleId && sessionStorage.getItem("data:blog")) {
+        const blog = JSON.parse(sessionStorage.getItem("data:blog")).find(
+          article => article._id === this.articleId
+        );
+        this.computedArticle = blog;
+      } else {
+        this.computedArticle = this.carticle;
+      }
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.article{
-    width:100%;
+.article {
+  width: 80vw;
+  margin: 20px 0;
+  &-header {
     text-align: center;
-    margin:auto;
-    /* .navigation{
-        margin:auto
-    } */
-    .image{
-        width:30%;
-        height: 50%;
+    &__mdtitle {
+      margin: 20px 0;
     }
-    .article-content{
-        width: 70%;
-        margin: auto;
-        text-align: left
+  }
+  &-main {
+    &__image {
+      width: 30%;
+      height: 50%;
     }
+    &__header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    &__content {
+      min-height: 300px;
+      border-top: 3px dashed black;
+      border-bottom: 3px dashed black;
+      padding: 5px;
+    }
+  }
+  &-footer {
+    &__submit {
+      width: 40%;
+    }
+    &-common {
+      margin-bottom: 30px;
+    }
+  }
+  &-common {
+    margin-bottom: 30px;
+  }
 }
-
-
-
 </style>

@@ -16,7 +16,7 @@
                 >创建时间:
                 {{ birthtime.slice(0, -5) | formatTimestampToDate }}</time
               >
-              <el-button type="info" class="button" @click="filteArticle()"
+              <el-button type="info" class="button" @click="filteArticle"
                 >阅读全文</el-button
               >
             </div>
@@ -34,10 +34,7 @@ import { FILTE_ARTICLE } from "../../store/mutation-types";
 export default {
   name: "birefarticle",
   template: "<birefarticle/>",
-  props: ["index", "title", "item", "birthtime", "imgsrc"],
-  data() {
-    return {};
-  },
+  props: ["index", "title", "item", "birthtime", "imgsrc", "id"],
   computed: {
     arcindex() {
       return this.index;
@@ -57,7 +54,7 @@ export default {
   methods: {
     filteArticle: function() {
       this.$store.commit(FILTE_ARTICLE, this.index);
-      this.$router.push({ path: "/blog/" + this.title });
+      this.$router.push({ path: "/blog/" + this.title + `?id=${this.id}` });
     }
   }
 };

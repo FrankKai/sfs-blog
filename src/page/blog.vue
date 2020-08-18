@@ -7,60 +7,52 @@
     <navigation></navigation>
     <briefarticle
       v-for="(item, index) in articles"
-      v-bind:item="item"
-      v-bind:index="index"
-      v-bind:key="item.id"
+      :item="item"
+      :index="index"
+      :key="item.id"
       :title="item.title"
       :birthtime="item.birthTime"
       :imgsrc="item.imgSrc"
+      :id="item._id"
     ></briefarticle>
-
   </div>
 </template>
 
 <script>
-import navigation from '../components/common/navigation.vue'
-import briefarticle from '../components/blog/briefarticle.vue'
-import blogger from '../components/blog/blogger.vue'
-import timestamp from '../components/blog/timestamp.vue'
-import dataApi from '../api/dataapi'
-import { SET_DATA} from '../store/mutation-types'
-// import Category from './category.vue'
-// import Article from './article.vue'
-// import VueMarkdown from 'vue-markdown'
-
+import { mapActions } from "vuex";
+import navigation from "@/components/common/navigation.vue";
+import briefarticle from "@/components/blog/briefarticle.vue";
+import blogger from "@/components/blog/blogger.vue";
+import timestamp from "@/components/blog/timestamp.vue";
+import { SET_DATA } from "@/store/mutation-types";
 
 export default {
-  name: 'blog',
-  components: {navigation,briefarticle,blogger,timestamp/*,VueMarkdown*/},
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  name: "blog",
+  components: { navigation, briefarticle, blogger, timestamp },
+  mounted() {
+    this.getAllBlogs();
+  },
+  computed: {
+    articles() {
+      return this.$store.state.data.blog;
     }
   },
-  mounted(){
-    let that=this;
-    dataApi.getData(data => {
-        that.$store.commit(SET_DATA,data);
-      }
-    )
-    console.log(that.$store)
-  },
-  computed:{
-      articles(){
-        return this.$store.state.data.blog
-      }
+  methods: {
+    ...mapActions(["UPDATE_GLOBAL_BLOGS"]),
+    getAllBlogs() {
+      this.UPDATE_GLOBAL_BLOGS();
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.blog{
+.blog {
   width: 80%;
-  /* height: 100%; */
 }
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -77,11 +69,11 @@ li {
 a {
   color: #42b983;
 }
-.vue-markdown{
+.vue-markdown {
   width: 80%;
-  background: rgba(183,245,222,0.5);
+  background: rgba(183, 245, 222, 0.5);
 }
-.sidebar{
+.sidebar {
   float: right;
   width: 30%;
 }

@@ -6,80 +6,67 @@
     </div>
     <navigation></navigation>
     <ul>
-        <li v-for="article in articles" :key="article" @click="filteArticle(article)">
-          <router-link :to="'/category'+'/'+name+'/'+article.slice(0,-3)">
-            {{article.slice(0,-3)}}
-          </router-link>
-        </li>
+      <li
+        v-for="article in articles"
+        :key="article"
+        @click="filteArticle(article)"
+      >
+        <router-link
+          :to="'/category' + '/' + name + '/' + article.slice(0, -3)"
+        >
+          {{ article.slice(0, -3) }}
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-// import dataApi from '../../api/dataapi'
-// import { FILTE_CATEGORY_ARTICLE,SET_DATA,FILTE_ARTICLES } from '../../store/mutation-types'
-import { FILTE_ARTICLES } from '../../store/mutation-types'
-import navigation from '../common/navigation.vue'
-import blogger from '../blog/blogger.vue'
-import timestamp from '../blog/timestamp.vue'
+import { FILTE_ARTICLES } from "../../store/mutation-types";
+import navigation from "../common/navigation.vue";
+import blogger from "../blog/blogger.vue";
+import timestamp from "../blog/timestamp.vue";
 
 export default {
-  name: 'articlelists',
-  template: '<articlelists/>',
-  components: {navigation,blogger,timestamp},
-  data () {
+  name: "articlelists",
+  template: "<articlelists/>",
+  components: { navigation, blogger, timestamp },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: "Welcome to Your Vue.js App"
+    };
+  },
+  computed: {
+    articles() {
+      return this.$store.state.currentArticles.data;
+    },
+    locationUrl() {
+      return location.href + "/";
+    },
+    name() {
+      return this.$store.state.currentArticles.name;
     }
   },
-  computed:{
-      articles(){
-        return this.$store.state.currentArticles.data
-      },
-      locationUrl(){
-        return location.href  + '/'
-        // console.log(this.location)
-      },
-      name(){
-        return this.$store.state.currentArticles.name        
-      }
-  },
-  created(){
-    console.log(location)
-  },
-  // mounted(){
-  //   let that=this;
-  //   dataApi.getData(data => {
-  //       that.$store.commit(SET_DATA,data);
-  //     }
-  //   )
-  // },
-//   methods:{
-//       getArticles:function(){
-//           this.$store.commit(FILTE_ARTICLES)
-//       }
-//   }
-  methods:{
-    filteArticle: function(article){
-      console.log(article)
-      this.$store.commit('FILTE_CATEGORY_ARTICLE',article);
-      // this.$router.push({path:'/blog/'+this.title});
+  methods: {
+    filteArticle: function(article) {
+      console.log(article);
+      this.$store.commit("FILTE_CATEGORY_ARTICLE", article);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.articlelists{
-width: 80%;
-  ul{
+.articlelists {
+  width: 80%;
+  ul {
     padding: 0;
     margin: 0;
     width: 70%;
-    li{
+    li {
       list-style: none;
-      a{
+      a {
         display: block;
         margin-top: 5px;
         text-decoration: none;
@@ -87,17 +74,16 @@ width: 80%;
         padding: 5px;
         background: #e4e8f1;
         border-radius: 5px;
-        &:hover{
+        &:hover {
           background: #8391a5;
           color: #fff;
         }
       }
     }
-  };
+  }
 }
-.sidebar{
+.sidebar {
   float: right;
   width: 30%;
 }
-  
 </style>
